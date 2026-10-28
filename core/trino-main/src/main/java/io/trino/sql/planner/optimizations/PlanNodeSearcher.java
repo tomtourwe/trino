@@ -24,7 +24,6 @@ import java.util.function.Predicate;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Predicates.alwaysFalse;
 import static com.google.common.base.Predicates.alwaysTrue;
-import static com.google.common.collect.ImmutableList.toImmutableList;
 import static com.google.common.collect.Iterables.getOnlyElement;
 import static io.trino.sql.planner.iterative.Lookup.noLookup;
 import static io.trino.sql.planner.plan.ChildReplacer.replaceChildren;
@@ -138,30 +137,6 @@ public class PlanNodeSearcher
         }
     }
 
-    public PlanNode removeAll()
-    {
-        return removeAllRecursive(node);
-    }
-
-    private PlanNode removeAllRecursive(PlanNode node)
-    {
-        node = lookup.resolve(node);
-
-        if (where.test(node)) {
-            checkArgument(
-                    node.getSources().size() == 1,
-                    "Unable to remove plan node as it contains 0 or more than 1 children");
-            return getOnlyElement(node.getSources());
-        }
-        if (recurseOnlyWhen.test(node)) {
-            List<PlanNode> sources = node.getSources().stream()
-                    .map(this::removeAllRecursive)
-                    .collect(toImmutableList());
-            return replaceChildren(node, sources);
-        }
-        return node;
-    }
-
     public PlanNode removeFirst()
     {
         return removeFirstRecursive(node);
@@ -188,44 +163,6 @@ public class PlanNodeSearcher
             throw new IllegalArgumentException("Unable to remove first node when a node has multiple children, use removeAll instead");
         }
         return node;
-    }
-
-    public PlanNode replaceAll(PlanNode newPlanNode)
-    {
-        return replaceAllRecursive(node, newPlanNode);
-    }
-
-    private PlanNode replaceAllRecursive(PlanNode node, PlanNode nodeToReplace)
-    {
-        node = lookup.resolve(node);
-
-        if (where.test(node)) {
-            return nodeToReplace;
-        }
-        if (recurseOnlyWhen.test(node)) {
-            List<PlanNode> sources = node.getSources().stream()
-                    .map(source -> replaceAllRecursive(source, nodeToReplace))
-                    .collect(toImmutableList());
-            return replaceChildren(node, sources);
-        }
-        return node;
-    }
-
-    private PlanNode replaceFirstRecursive(PlanNode node, PlanNode nodeToReplace)
-    {
-        node = lookup.resolve(node);
-
-        if (where.test(node)) {
-            return nodeToReplace;
-        }
-        List<PlanNode> sources = node.getSources();
-        if (sources.isEmpty()) {
-            return node;
-        }
-        if (sources.size() == 1) {
-            return replaceChildren(node, ImmutableList.of(replaceFirstRecursive(node, getOnlyElement(sources))));
-        }
-        throw new IllegalArgumentException("Unable to replace first node when a node has multiple children, use replaceAll instead");
     }
 
     public boolean matches()

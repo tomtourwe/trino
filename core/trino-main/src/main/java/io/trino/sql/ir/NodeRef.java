@@ -30,11 +30,6 @@ public final class NodeRef<T extends Expression>
         this.node = requireNonNull(node, "node is null");
     }
 
-    public T getNode()
-    {
-        return node;
-    }
-
     @Override
     public boolean equals(Object o)
     {

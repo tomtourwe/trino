@@ -569,20 +569,6 @@ public class SymbolMapper
                 newOutputs);
     }
 
-    public MergeWriterNode map(MergeWriterNode node, PlanNode source, PlanNodeId newId)
-    {
-        // Intentionally does not use mapAndDistinct on columns as that would remove columns
-        List<Symbol> newOutputs = map(node.getOutputSymbols());
-
-        return new MergeWriterNode(
-                newId,
-                source,
-                node.getTarget(),
-                map(node.getProjectedSymbols()),
-                node.getPartitioningScheme().map(partitioningScheme -> map(partitioningScheme, source.getOutputSymbols())),
-                newOutputs);
-    }
-
     public MergeProcessorNode map(MergeProcessorNode node, PlanNode source)
     {
         List<Symbol> newOutputs = map(node.getOutputSymbols());

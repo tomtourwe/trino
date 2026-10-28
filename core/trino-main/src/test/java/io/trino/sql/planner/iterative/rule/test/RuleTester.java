@@ -86,11 +86,6 @@ public class RuleTester
         return metadata;
     }
 
-    public FunctionManager getFunctionManager()
-    {
-        return functionManager;
-    }
-
     public Session getSession()
     {
         return session;
@@ -134,12 +129,6 @@ public class RuleTester
         private ConnectorFactory defaultCatalogConnectorFactory = new TpchConnectorFactory(1);
 
         private Builder() {}
-
-        public Builder addPlugin(Plugin plugin)
-        {
-            plugins.add(requireNonNull(plugin, "plugin is null"));
-            return this;
-        }
 
         public Builder addPlugins(List<Plugin> plugins)
         {

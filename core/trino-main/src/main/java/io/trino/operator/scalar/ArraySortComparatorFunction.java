@@ -22,7 +22,6 @@ import io.trino.spi.function.OperatorDependency;
 import io.trino.spi.function.ScalarFunction;
 import io.trino.spi.function.SqlType;
 import io.trino.spi.function.TypeParameter;
-import io.trino.sql.gen.lambda.LambdaFunctionInterface;
 
 import java.lang.invoke.MethodHandle;
 import java.util.Comparator;
@@ -94,7 +93,6 @@ public final class ArraySortComparatorFunction
 
     @FunctionalInterface
     public interface ComparatorObjectLambda
-            extends LambdaFunctionInterface
     {
         Long apply(Object x, Object y);
     }

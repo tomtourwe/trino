@@ -489,11 +489,6 @@ public class PreAggregateCaseAggregations
             return cumulativeFunction;
         }
 
-        public CatalogSchemaFunctionName getName()
-        {
-            return name;
-        }
-
         public Expression getOperand()
         {
             return operand;

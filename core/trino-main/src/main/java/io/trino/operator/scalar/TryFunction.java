@@ -20,7 +20,6 @@ import io.trino.spi.function.SqlNullable;
 import io.trino.spi.function.SqlType;
 import io.trino.spi.function.TypeParameter;
 import io.trino.spi.function.TypeParameterSpecialization;
-import io.trino.sql.gen.lambda.LambdaFunctionInterface;
 
 import java.util.function.Supplier;
 
@@ -105,28 +104,24 @@ public final class TryFunction
 
     @FunctionalInterface
     public interface TryLongLambda
-            extends LambdaFunctionInterface
     {
         Long apply();
     }
 
     @FunctionalInterface
     public interface TryDoubleLambda
-            extends LambdaFunctionInterface
     {
         Double apply();
     }
 
     @FunctionalInterface
     public interface TryBooleanLambda
-            extends LambdaFunctionInterface
     {
         Boolean apply();
     }
 
     @FunctionalInterface
     public interface TryObjectLambda
-            extends LambdaFunctionInterface
     {
         Object apply();
     }

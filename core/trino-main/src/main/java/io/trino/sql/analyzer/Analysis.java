@@ -422,11 +422,6 @@ public class Analysis
         relationCoercions.put(NodeRef.of(relation), ImmutableList.copyOf(types));
     }
 
-    public Map<NodeRef<Expression>, Type> getCoercions()
-    {
-        return unmodifiableMap(coercions);
-    }
-
     public Type getCoercion(Expression expression)
     {
         checkArgument(isAnalyzed(expression), "Expression has not been analyzed (%s): %s", expression.getClass().getName(), expression);
@@ -1098,11 +1093,6 @@ public class Analysis
     public void addPatternNavigationFunctions(Set<NodeRef<FunctionCall>> functions)
     {
         patternNavigationFunctions.addAll(functions);
-    }
-
-    public Optional<String> getLabel(Expression expression)
-    {
-        return labels.get(NodeRef.of(expression));
     }
 
     public boolean isPatternRecognitionFunction(FunctionCall functionCall)

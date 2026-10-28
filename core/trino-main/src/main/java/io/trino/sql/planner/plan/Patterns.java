@@ -364,11 +364,6 @@ public final class Patterns
     {
         private Limit() {}
 
-        public static Property<LimitNode, Lookup, Long> count()
-        {
-            return property("count", LimitNode::getCount);
-        }
-
         public static Property<LimitNode, Lookup, Boolean> requiresPreSortedInputs()
         {
             return property("requiresPreSortedInputs", LimitNode::requiresPreSortedInputs);
@@ -398,21 +393,11 @@ public final class Patterns
         {
             return property("step", TopNNode::getStep);
         }
-
-        public static Property<TopNNode, Lookup, Long> count()
-        {
-            return property("count", TopNNode::getCount);
-        }
     }
 
     public static final class Values
     {
         private Values() {}
-
-        public static Property<ValuesNode, Lookup, Optional<List<Expression>>> rows()
-        {
-            return property("rows", ValuesNode::getRows);
-        }
 
         public static Property<ValuesNode, Lookup, Integer> rowCount()
         {

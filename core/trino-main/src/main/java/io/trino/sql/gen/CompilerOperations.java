@@ -16,8 +16,6 @@ package io.trino.sql.gen;
 import io.trino.spi.block.Block;
 import jakarta.annotation.Nullable;
 
-import java.util.Set;
-
 import static io.trino.spi.type.BooleanType.BOOLEAN;
 
 // These methods are statically bound by the compiler
@@ -30,11 +28,6 @@ public final class CompilerOperations
         return left && right;
     }
 
-    public static boolean or(boolean left, boolean right)
-    {
-        return left || right;
-    }
-
     public static boolean not(boolean value)
     {
         return !value;
@@ -43,16 +36,6 @@ public final class CompilerOperations
     public static boolean lessThan(int left, int right)
     {
         return left < right;
-    }
-
-    public static boolean greaterThan(int left, int right)
-    {
-        return left > right;
-    }
-
-    public static boolean in(Object value, Set<?> set)
-    {
-        return set.contains(value);
     }
 
     public static boolean testMask(@Nullable Block masks, int index)

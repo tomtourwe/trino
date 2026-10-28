@@ -109,12 +109,6 @@ public class PlanFragmentMatcher
             return this;
         }
 
-        public Builder partitioning(PartitioningHandle partitioning)
-        {
-            this.partitioning = Optional.of(partitioning);
-            return this;
-        }
-
         public Builder inputPartitionCount(int inputPartitionCount)
         {
             this.inputPartitionCount = OptionalInt.of(inputPartitionCount);
