@@ -44,7 +44,6 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public class TextRenderer
-        implements Renderer<String>
 {
     private final boolean verbose;
     private final int level;
@@ -55,7 +54,6 @@ public class TextRenderer
         this.level = level;
     }
 
-    @Override
     public String render(PlanRepresentation plan)
     {
         StringBuilder output = new StringBuilder();

@@ -137,12 +137,6 @@ public class RowNumberMatcher
             return this;
         }
 
-        public Builder rowNumberSymbol(SymbolAlias rowNumberSymbol)
-        {
-            this.rowNumberSymbol = Optional.of(requireNonNull(rowNumberSymbol, "rowNumberSymbol is null"));
-            return this;
-        }
-
         public Builder orderSensitive(boolean isOrderSensitive)
         {
             this.orderSensitive = Optional.of(isOrderSensitive);

@@ -96,12 +96,6 @@ public class TableFunctionProcessorBuilder
         return this;
     }
 
-    public TableFunctionProcessorBuilder prePartitioned(Set<Symbol> prePartitioned)
-    {
-        this.prePartitioned = prePartitioned;
-        return this;
-    }
-
     public TableFunctionProcessorBuilder preSorted(int preSorted)
     {
         this.preSorted = preSorted;

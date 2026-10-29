@@ -25,7 +25,6 @@ import io.trino.spi.function.FunctionMetadata;
 import io.trino.spi.function.Signature;
 import io.trino.spi.type.MapType;
 import io.trino.spi.type.Type;
-import io.trino.sql.gen.lambda.LambdaFunctionInterface;
 
 import java.lang.invoke.MethodHandle;
 import java.util.Optional;
@@ -149,7 +148,6 @@ public final class MapZipWithFunction
 
     @FunctionalInterface
     public interface MapZipWithLambda
-            extends LambdaFunctionInterface
     {
         Object apply(Object key, Object value1, Object value2);
     }

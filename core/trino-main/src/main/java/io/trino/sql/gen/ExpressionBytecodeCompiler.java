@@ -106,11 +106,6 @@ public class ExpressionBytecodeCompiler
         return compile(expression, scope, Optional.empty(), ImmutableMap.of());
     }
 
-    public BytecodeNode compile(Expression expression, Scope scope, Optional<Class<?>> lambdaInterface)
-    {
-        return compile(expression, scope, lambdaInterface, ImmutableMap.of());
-    }
-
     public BytecodeNode compile(Expression expression, Scope scope, Optional<Class<?>> lambdaInterface, Map<String, LetBinding> lets)
     {
         return new Visitor().process(expression, new Context(scope, lambdaInterface, lets));

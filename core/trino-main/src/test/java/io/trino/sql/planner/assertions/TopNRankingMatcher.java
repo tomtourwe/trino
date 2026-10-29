@@ -134,12 +134,6 @@ public class TopNRankingMatcher
             return this;
         }
 
-        public Builder rankingSymbol(SymbolAlias rankingSymbol)
-        {
-            this.rankingSymbol = Optional.of(requireNonNull(rankingSymbol, "rankingSymbol is null"));
-            return this;
-        }
-
         public Builder rankingType(RankingType rankingType)
         {
             this.rankingType = Optional.of(requireNonNull(rankingType, "rankingType is null"));

@@ -29,11 +29,9 @@ import static io.airlift.json.JsonCodec.jsonCodec;
 import static java.util.Objects.requireNonNull;
 
 public class JsonRenderer
-        implements Renderer<String>
 {
     private static final JsonCodec<JsonRenderedNode> CODEC = jsonCodec(JsonRenderedNode.class);
 
-    @Override
     public String render(PlanRepresentation plan)
     {
         return CODEC.toJson(renderJson(plan, plan.getRoot(), false));

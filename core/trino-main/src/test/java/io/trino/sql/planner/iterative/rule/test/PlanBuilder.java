@@ -209,11 +209,6 @@ public class PlanBuilder
             return this;
         }
 
-        public OutputBuilder column(Symbol symbol)
-        {
-            return column(symbol, symbol.name());
-        }
-
         public OutputBuilder column(Symbol symbol, String columnName)
         {
             outputs.add(symbol);

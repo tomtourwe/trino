@@ -44,7 +44,6 @@ import io.trino.spi.type.FunctionType;
 import io.trino.spi.type.Type;
 import io.trino.spi.type.TypeManager;
 import io.trino.sql.InterpretedFunctionInvoker;
-import io.trino.sql.gen.lambda.LambdaFunctionInterface;
 import io.trino.sql.tree.JsonValue.EmptyOrErrorBehavior;
 import io.trino.type.SqlJsonPathType;
 
@@ -424,7 +423,6 @@ public class JsonValueFunction
 
     @FunctionalInterface
     public interface DefaultValueLambda
-            extends LambdaFunctionInterface
     {
         Object apply();
     }

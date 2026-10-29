@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Preconditions.checkArgument;
@@ -215,27 +214,6 @@ public class StreamPreferredProperties
     public boolean isOrderSensitive()
     {
         return orderSensitive;
-    }
-
-    public StreamPreferredProperties translate(Function<Symbol, Optional<Symbol>> translator)
-    {
-        return new StreamPreferredProperties(
-                distribution,
-                partitioningColumns.flatMap(partitioning -> translateSymbols(partitioning, translator)),
-                orderSensitive);
-    }
-
-    private static Optional<List<Symbol>> translateSymbols(Iterable<Symbol> partitioning, Function<Symbol, Optional<Symbol>> translator)
-    {
-        ImmutableList.Builder<Symbol> newPartitioningColumns = ImmutableList.builder();
-        for (Symbol partitioningColumn : partitioning) {
-            Optional<Symbol> translated = translator.apply(partitioningColumn);
-            if (translated.isEmpty()) {
-                return Optional.empty();
-            }
-            newPartitioningColumns.add(translated.get());
-        }
-        return Optional.of(newPartitioningColumns.build());
     }
 
     @Override

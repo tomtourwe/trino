@@ -28,16 +28,9 @@ import io.trino.sql.planner.plan.ValuesNode;
 
 import java.util.function.Function;
 
-import static java.util.function.Function.identity;
-
 public final class DistinctOutputQueryUtil
 {
     private DistinctOutputQueryUtil() {}
-
-    public static boolean isDistinct(PlanNode node)
-    {
-        return node.accept(new IsDistinctPlanVisitor(identity()), null);
-    }
 
     public static boolean isDistinct(PlanNode node, Function<PlanNode, PlanNode> lookupFunction)
     {

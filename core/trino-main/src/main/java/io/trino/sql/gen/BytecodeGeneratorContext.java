@@ -111,11 +111,6 @@ public class BytecodeGeneratorContext
         return expressionCompiler.compile(expression, scope, Optional.empty(), lets);
     }
 
-    public Map<String, LetBinding> lets()
-    {
-        return lets;
-    }
-
     public ScalarFunctionImplementation getScalarFunctionImplementation(ResolvedFunction resolvedFunction, InvocationConvention invocationConvention)
     {
         return functionManager.getScalarFunctionImplementation(resolvedFunction, invocationConvention);

@@ -35,11 +35,6 @@ public final class LocalProperties
 {
     private LocalProperties() {}
 
-    public static <T> List<LocalProperty<T>> none()
-    {
-        return ImmutableList.of();
-    }
-
     public static <T> List<LocalProperty<T>> grouped(Collection<T> columns)
     {
         return ImmutableList.of(new GroupingProperty<>(columns));

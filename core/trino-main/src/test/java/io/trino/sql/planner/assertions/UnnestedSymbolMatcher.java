@@ -66,9 +66,4 @@ public class UnnestedSymbolMatcher
 
         return Optional.of(mapping.getOutputs().get(index));
     }
-
-    public String getSymbol()
-    {
-        return symbol;
-    }
 }
