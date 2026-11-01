@@ -358,23 +358,9 @@ public class MaterializedResult
             this.types = ImmutableList.copyOf(types);
         }
 
-        public synchronized Builder rows(List<MaterializedRow> rows)
-        {
-            this.rows.addAll(rows);
-            return this;
-        }
-
         public synchronized Builder row(Object... values)
         {
             rows.add(new MaterializedRow(DEFAULT_PRECISION, values));
-            return this;
-        }
-
-        public synchronized Builder rows(Object[][] rows)
-        {
-            for (Object[] row : rows) {
-                row(row);
-            }
             return this;
         }
 

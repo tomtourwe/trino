@@ -29,11 +29,6 @@ public final class BlockBigArray
         array = new ObjectBigArray<>();
     }
 
-    public BlockBigArray(Block block)
-    {
-        array = new ObjectBigArray<>(block);
-    }
-
     /**
      * Returns the size of this big array in bytes.
      */

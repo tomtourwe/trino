@@ -149,10 +149,5 @@ public final class MapConstructor
         {
             mapValueBuilder = BufferedMapValueBuilder.createBufferedStrict(mapType);
         }
-
-        public BufferedMapValueBuilder getMapValueBuilder()
-        {
-            return mapValueBuilder;
-        }
     }
 }

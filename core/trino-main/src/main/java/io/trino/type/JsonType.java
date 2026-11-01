@@ -39,7 +39,6 @@ import io.trino.spi.type.VariableWidthType;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
-import java.util.Optional;
 
 import static io.trino.json.JsonItemBuilder.JSON_ERROR;
 import static io.trino.spi.function.OperatorType.EQUAL;
@@ -200,14 +199,6 @@ public class JsonType
         // Append the value; the builder copies its bytes into the buffer — an already-encoded
         // or raw-text value verbatim, a tree value (path-engine output) encoded on the way in.
         ((JsonBlockBuilder) blockBuilder).appendJson((Json) value);
-    }
-
-    /// Builds a block directly over a column of JSON values a reader already holds as one buffer
-    /// plus an offsets table — which is this block's own layout. The buffer is adopted, not copied,
-    /// and raw text is never parsed or re-encoded to get in.
-    public static JsonBlock adopt(int positionCount, Optional<long[]> valueIsValid, int[] offsets, Slice buffer)
-    {
-        return new JsonBlock(positionCount, valueIsValid, offsets, buffer);
     }
 
     /// Wraps a slice (typed-encoding bytes or raw JSON text — distinguished by the

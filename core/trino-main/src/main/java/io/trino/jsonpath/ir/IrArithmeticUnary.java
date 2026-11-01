@@ -46,10 +46,5 @@ public record IrArithmeticUnary(Sign sign, IrPathNode base, Optional<Type> type)
         {
             this.sign = requireNonNull(sign, "sign is null");
         }
-
-        public String getSign()
-        {
-            return sign;
-        }
     }
 }

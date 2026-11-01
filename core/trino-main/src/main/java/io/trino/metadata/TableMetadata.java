@@ -30,11 +30,6 @@ public record TableMetadata(CatalogName catalogName, ConnectorTableMetadata meta
         requireNonNull(metadata, "metadata is null");
     }
 
-    public QualifiedObjectName qualifiedName()
-    {
-        return new QualifiedObjectName(catalogName.toString(), metadata.getTable().getSchemaName(), metadata.getTable().getTableName());
-    }
-
     public SchemaTableName table()
     {
         return metadata.getTable();

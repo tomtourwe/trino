@@ -350,8 +350,6 @@ public final class SessionPropertyManager
     public static class SessionPropertyValue
     {
         private final String fullyQualifiedName;
-        private final Optional<String> catalogName;
-        private final String propertyName;
         private final String description;
         private final String type;
         private final String value;
@@ -369,8 +367,6 @@ public final class SessionPropertyManager
                 boolean hidden)
         {
             this.fullyQualifiedName = fullyQualifiedName;
-            this.catalogName = catalogName;
-            this.propertyName = propertyName;
             this.description = description;
             this.type = type;
             this.value = value;
@@ -381,16 +377,6 @@ public final class SessionPropertyManager
         public String getFullyQualifiedName()
         {
             return fullyQualifiedName;
-        }
-
-        public Optional<String> getCatalogName()
-        {
-            return catalogName;
-        }
-
-        public String getPropertyName()
-        {
-            return propertyName;
         }
 
         public String getDescription()

@@ -119,12 +119,6 @@ public final class JsonArray
         return materialize().length();
     }
 
-    @VisibleForTesting
-    public boolean isMaterialized()
-    {
-        return encoded != null;
-    }
-
     private Slice materialize()
     {
         Slice value = encoded;

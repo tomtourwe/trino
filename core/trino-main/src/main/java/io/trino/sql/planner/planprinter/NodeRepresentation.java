@@ -100,11 +100,6 @@ public class NodeRepresentation
         return name;
     }
 
-    public String getType()
-    {
-        return type;
-    }
-
     public Map<String, String> getDescriptor()
     {
         return descriptor;

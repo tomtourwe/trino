@@ -86,8 +86,7 @@ public record TableChangesSplit(
     public enum ChangeType
     {
         ADDED_FILE("insert"),
-        DELETED_FILE("delete"),
-        POSITIONAL_DELETE("delete");
+        DELETED_FILE("delete");
 
         private final String tableValue;
 

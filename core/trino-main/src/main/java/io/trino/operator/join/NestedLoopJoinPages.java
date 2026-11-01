@@ -25,7 +25,6 @@ import static java.util.Objects.requireNonNull;
 public final class NestedLoopJoinPages
 {
     private final List<Page> pages;
-    private final DataSize estimatedSize;
 
     NestedLoopJoinPages(List<Page> pages, DataSize estimatedSize, OperatorContext operatorContext)
     {
@@ -33,16 +32,10 @@ public final class NestedLoopJoinPages
         requireNonNull(operatorContext, "operatorContext is null");
         requireNonNull(estimatedSize, "estimatedSize is null");
         this.pages = ImmutableList.copyOf(pages);
-        this.estimatedSize = estimatedSize;
     }
 
     public List<Page> getPages()
     {
         return pages;
-    }
-
-    public DataSize getEstimatedSize()
-    {
-        return estimatedSize;
     }
 }

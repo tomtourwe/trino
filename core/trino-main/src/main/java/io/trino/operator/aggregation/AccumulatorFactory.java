@@ -18,8 +18,6 @@ import java.util.function.Supplier;
 
 public interface AccumulatorFactory
 {
-    List<Class<?>> getLambdaInterfaces();
-
     Accumulator createAccumulator(List<Supplier<Object>> lambdaProviders);
 
     Accumulator createIntermediateAccumulator(List<Supplier<Object>> lambdaProviders);

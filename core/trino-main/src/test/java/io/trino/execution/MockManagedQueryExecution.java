@@ -303,12 +303,6 @@ public class MockManagedQueryExecution
     }
 
     @Override
-    public DataSize getUserMemoryReservation()
-    {
-        return memoryUsage;
-    }
-
-    @Override
     public DataSize getTotalMemoryReservation()
     {
         return memoryUsage;

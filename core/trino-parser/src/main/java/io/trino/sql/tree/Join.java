@@ -31,11 +31,6 @@ public class Join
         CROSS, INNER, LEFT, RIGHT, FULL, IMPLICIT
     }
 
-    public Join(Type type, Relation left, Relation right, Optional<JoinCriteria> criteria)
-    {
-        this(Optional.empty(), type, left, right, criteria);
-    }
-
     public Join(NodeLocation location, Type type, Relation left, Relation right, Optional<JoinCriteria> criteria)
     {
         this(Optional.of(location), type, left, right, criteria);

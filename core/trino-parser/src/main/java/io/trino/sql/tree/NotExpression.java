@@ -17,7 +17,6 @@ import com.google.common.collect.ImmutableList;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 import static java.util.Objects.requireNonNull;
 
@@ -25,13 +24,6 @@ public class NotExpression
         extends Expression
 {
     private final Expression value;
-
-    @Deprecated
-    public NotExpression(Expression value)
-    {
-        super(Optional.empty());
-        this.value = requireNonNull(value, "value is null");
-    }
 
     public NotExpression(NodeLocation location, Expression value)
     {

@@ -153,11 +153,6 @@ public class OperatorContext
         return operatorId;
     }
 
-    public String getOperatorType()
-    {
-        return operatorType;
-    }
-
     public DriverContext getDriverContext()
     {
         return driverContext;

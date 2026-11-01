@@ -304,11 +304,6 @@ public class DataDefinitionExecution<T extends Statement>
         return stateMachine.getPlanningTime();
     }
 
-    public List<Expression> getParameters()
-    {
-        return parameters;
-    }
-
     public static class DataDefinitionExecutionFactory
             implements QueryExecutionFactory<DataDefinitionExecution<?>>
     {

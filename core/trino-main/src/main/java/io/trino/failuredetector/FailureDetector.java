@@ -14,21 +14,10 @@
 package io.trino.failuredetector;
 
 import io.airlift.discovery.client.ServiceDescriptor;
-import io.trino.spi.HostAddress;
 
 import java.util.Set;
 
 public interface FailureDetector
 {
     Set<ServiceDescriptor> getFailed();
-
-    State getState(HostAddress hostAddress);
-
-    enum State
-    {
-        UNKNOWN,
-        ALIVE,
-        GONE,
-        UNRESPONSIVE,
-    }
 }

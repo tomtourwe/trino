@@ -21,7 +21,6 @@ import io.trino.spi.function.FunctionDependencies;
 import io.trino.spi.function.FunctionMetadata;
 import io.trino.spi.function.Signature;
 import io.trino.spi.type.Type;
-import io.trino.sql.gen.lambda.LambdaFunctionInterface;
 
 import java.lang.invoke.MethodHandle;
 import java.util.Optional;
@@ -77,8 +76,7 @@ public final class InvokeFunction
     }
 
     @FunctionalInterface
-    public interface InvokeLambda
-            extends LambdaFunctionInterface
+    public interface InvokeLambda 
     {
         Object apply();
     }

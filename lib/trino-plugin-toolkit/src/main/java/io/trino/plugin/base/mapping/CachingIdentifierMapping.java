@@ -79,12 +79,6 @@ public final class CachingIdentifierMapping
     }
 
     @Override
-    public String fromRemoteColumnName(String remoteColumnName)
-    {
-        return identifierMapping.fromRemoteColumnName(remoteColumnName);
-    }
-
-    @Override
     public String toRemoteSchemaName(RemoteIdentifiers remoteIdentifiers, ConnectorIdentity identity, String schemaName)
     {
         requireNonNull(schemaName, "schemaName is null");

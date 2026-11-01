@@ -21,8 +21,6 @@ import static java.lang.String.format;
 public class SchemaAlreadyExistsException
         extends TrinoException
 {
-    private final String schemaName;
-
     public SchemaAlreadyExistsException(String schemaName)
     {
         this(schemaName, null);
@@ -36,11 +34,5 @@ public class SchemaAlreadyExistsException
     public SchemaAlreadyExistsException(String schemaName, String message, Throwable cause)
     {
         super(ALREADY_EXISTS, message, cause);
-        this.schemaName = schemaName;
-    }
-
-    public String getSchemaName()
-    {
-        return schemaName;
     }
 }

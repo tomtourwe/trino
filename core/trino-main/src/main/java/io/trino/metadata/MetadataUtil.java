@@ -334,12 +334,6 @@ public final class MetadataUtil
             return this;
         }
 
-        public TableMetadataBuilder property(String name, Object value)
-        {
-            properties.put(name, value);
-            return this;
-        }
-
         public ConnectorTableMetadata build()
         {
             return new ConnectorTableMetadata(tableName, columns.build(), properties.buildOrThrow(), comment);

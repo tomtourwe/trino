@@ -145,10 +145,6 @@ public class HiveKerberosEnvironment
      */
     public record PrincipalSpec(String principal, String kdcKeytabPath, boolean otherRealm)
     {
-        public PrincipalSpec(String principal, String kdcKeytabPath)
-        {
-            this(principal, kdcKeytabPath, false);
-        }
     }
 
     @Override

@@ -32,11 +32,6 @@ public final class PathNodeRef<T extends PathNode>
         this.pathNode = requireNonNull(pathNode, "pathNode is null");
     }
 
-    public T getNode()
-    {
-        return pathNode;
-    }
-
     @Override
     public boolean equals(Object o)
     {

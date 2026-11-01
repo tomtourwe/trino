@@ -37,8 +37,6 @@ public interface ManagedQueryExecution
 
     Session getSession();
 
-    DataSize getUserMemoryReservation();
-
     DataSize getTotalMemoryReservation();
 
     Duration getTotalCpuTime();

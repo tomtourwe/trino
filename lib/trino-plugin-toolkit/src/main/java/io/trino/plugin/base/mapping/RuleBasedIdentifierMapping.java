@@ -76,12 +76,6 @@ public class RuleBasedIdentifierMapping
     }
 
     @Override
-    public String fromRemoteColumnName(String remoteColumnName)
-    {
-        return delegate.fromRemoteColumnName(remoteColumnName);
-    }
-
-    @Override
     public String toRemoteSchemaName(RemoteIdentifiers remoteIdentifiers, ConnectorIdentity identity, String schemaName)
     {
         String remoteSchemaName = toRemoteSchema.get(schemaName);

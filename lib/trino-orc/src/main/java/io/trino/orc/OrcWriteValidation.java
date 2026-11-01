@@ -164,11 +164,6 @@ public class OrcWriteValidation
         return compression;
     }
 
-    public ZoneId getTimeZone()
-    {
-        return timeZone;
-    }
-
     public void validateTimeZone(OrcDataSourceId orcDataSourceId, ZoneId actualTimeZone)
             throws OrcCorruptionException
     {
@@ -185,11 +180,6 @@ public class OrcWriteValidation
     public List<String> getColumnNames()
     {
         return columnNames;
-    }
-
-    public Map<String, Slice> getMetadata()
-    {
-        return metadata;
     }
 
     public void validateMetadata(OrcDataSourceId orcDataSourceId, Map<String, Slice> actualMetadata)

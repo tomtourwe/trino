@@ -62,13 +62,6 @@ public class HivePartitionManager
 
     public HivePartitionManager(
             int maxPartitionsForEagerLoad,
-            int domainCompactionThreshold)
-    {
-        this(maxPartitionsForEagerLoad, domainCompactionThreshold, ConnectorExpressionEvaluator.NO_OP);
-    }
-
-    public HivePartitionManager(
-            int maxPartitionsForEagerLoad,
             int domainCompactionThreshold,
             ConnectorExpressionEvaluator evaluator)
     {

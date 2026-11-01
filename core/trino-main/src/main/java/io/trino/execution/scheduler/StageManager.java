@@ -183,11 +183,6 @@ class StageManager
         sqlStage.failTaskRemotely(taskId, failureCause);
     }
 
-    public List<SqlStage> getStagesInTopologicalOrder()
-    {
-        return stagesInTopologicalOrder;
-    }
-
     public List<SqlStage> getCoordinatorStagesInTopologicalOrder()
     {
         return coordinatorStagesInTopologicalOrder;
@@ -213,21 +208,11 @@ class StageManager
         return requireNonNull(stages.get(stageId), () -> "stage not found: " + stageId);
     }
 
-    public Set<SqlStage> getChildren(PlanFragmentId fragmentId)
-    {
-        return getChildren(getStageId(queryStateMachine.getQueryId(), fragmentId));
-    }
-
     public Set<SqlStage> getChildren(StageId stageId)
     {
         return children.get(stageId).stream()
                 .map(this::get)
                 .collect(toImmutableSet());
-    }
-
-    public Optional<SqlStage> getParent(PlanFragmentId fragmentId)
-    {
-        return getParent(getStageId(queryStateMachine.getQueryId(), fragmentId));
     }
 
     public Optional<SqlStage> getParent(StageId stageId)

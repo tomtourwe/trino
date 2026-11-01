@@ -330,12 +330,6 @@ public class PageProcessor
         }
     }
 
-    @VisibleForTesting
-    public List<PageProjection> getProjections()
-    {
-        return projections;
-    }
-
     @NotThreadSafe
     private static class DictionarySourceIdFunction
             implements Function<DictionaryBlock, DictionaryId>

@@ -90,27 +90,6 @@ public final class IntBigArray
     }
 
     /**
-     * Increments the element of this big array at specified index.
-     *
-     * @param index a position in this big array.
-     */
-    public void increment(long index)
-    {
-        array[segment(index)][offset(index)]++;
-    }
-
-    /**
-     * Adds the specified value to the specified element of this big array.
-     *
-     * @param index a position in this big array.
-     * @param value the value
-     */
-    public void add(long index, int value)
-    {
-        array[segment(index)][offset(index)] += value;
-    }
-
-    /**
      * Ensures this big array is at least the specified length.  If the array is smaller, segments
      * are added until the array is larger then the specified length.
      */

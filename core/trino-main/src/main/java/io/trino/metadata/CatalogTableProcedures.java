@@ -35,11 +35,6 @@ public class CatalogTableProcedures
         this.procedures = Maps.uniqueIndex(procedures, TableProcedureMetadata::getName);
     }
 
-    public Collection<TableProcedureMetadata> getTableProcedures()
-    {
-        return procedures.values();
-    }
-
     public TableProcedureMetadata getTableProcedure(String name)
     {
         TableProcedureMetadata procedure = procedures.get(name);

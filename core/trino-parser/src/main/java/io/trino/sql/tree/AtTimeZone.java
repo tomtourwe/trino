@@ -28,12 +28,6 @@ public class AtTimeZone
     private final Expression value;
     private final Expression timeZone;
 
-    @Deprecated
-    public AtTimeZone(Expression value, Expression timeZone)
-    {
-        this(Optional.empty(), value, timeZone);
-    }
-
     public AtTimeZone(NodeLocation location, Expression value, Expression timeZone)
     {
         this(Optional.of(location), value, timeZone);

@@ -22,11 +22,6 @@ import static java.lang.String.format;
 public class ParquetCorruptionException
         extends IOException
 {
-    public ParquetCorruptionException(ParquetDataSourceId dataSourceId, String message)
-    {
-        this(dataSourceId, "%s", message);
-    }
-
     @FormatMethod
     public ParquetCorruptionException(Throwable cause, ParquetDataSourceId dataSourceId, String messageFormat, Object... args)
     {

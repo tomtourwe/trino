@@ -493,11 +493,6 @@ public class BenchmarkGroupByHashOnSimulatedData
             checkArgument(dictionaryPositionsCount == -1 || dictionaryPositionsCount >= distinctValuesCountInColumn);
         }
 
-        public ColumnType getColumnType()
-        {
-            return columnType;
-        }
-
         public Block[] createBlocks(int blockCount, int positionsPerBlock, int channel, double nullChance)
         {
             Block[] blocks = new Block[blockCount];

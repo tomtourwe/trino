@@ -54,11 +54,6 @@ public class ScalarHeader
     private final boolean instanceMethod;
     private final Optional<DomainProjection> domainProjection;
 
-    public ScalarHeader(String name, Set<String> aliases, Optional<String> description, boolean hidden, boolean deterministic, boolean neverFails, Optional<TypeTemplate> receiverType, boolean instanceMethod)
-    {
-        this(name, aliases, description, hidden, deterministic, neverFails, receiverType, instanceMethod, Optional.empty());
-    }
-
     private ScalarHeader(String name, Set<String> aliases, Optional<String> description, boolean hidden, boolean deterministic, boolean neverFails, Optional<TypeTemplate> receiverType, boolean instanceMethod, Optional<DomainProjection> domainProjection)
     {
         this.name = requireNonNull(name, "name is null");
@@ -74,11 +69,6 @@ public class ScalarHeader
         checkArgument(!instanceMethod || receiverType.isEmpty(), "instance method receiver type is inferred from the first argument");
         this.instanceMethod = instanceMethod;
         this.domainProjection = requireNonNull(domainProjection, "domainProjection is null");
-    }
-
-    public ScalarHeader(OperatorType operatorType, Optional<String> description, boolean neverFails)
-    {
-        this(operatorType, description, neverFails, Optional.empty());
     }
 
     private ScalarHeader(OperatorType operatorType, Optional<String> description, boolean neverFails, Optional<DomainProjection> domainProjection)

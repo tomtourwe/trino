@@ -23,7 +23,6 @@ import io.trino.filesystem.TrinoInputFile;
 import io.trino.filesystem.TrinoOutputFile;
 import io.trino.filesystem.UriLocation;
 import io.trino.filesystem.encryption.EncryptionKey;
-import io.trino.spi.metrics.Metrics;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -235,11 +234,5 @@ final class TracingFileSystem
                 .setAttribute(FileSystemAttributes.FILE_LOCATION, location.toString())
                 .startSpan();
         return withTracing(span, () -> delegate.encryptedPreSignedUri(location, ttl, key));
-    }
-
-    @Override
-    public Metrics getMetrics()
-    {
-        return delegate.getMetrics();
     }
 }

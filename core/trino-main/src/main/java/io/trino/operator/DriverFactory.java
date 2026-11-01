@@ -89,12 +89,6 @@ public class DriverFactory
         return driverInstances;
     }
 
-    @Nullable
-    public List<OperatorFactory> getOperatorFactories()
-    {
-        return operatorFactories;
-    }
-
     public Driver createDriver(DriverContext driverContext)
     {
         requireNonNull(driverContext, "driverContext is null");

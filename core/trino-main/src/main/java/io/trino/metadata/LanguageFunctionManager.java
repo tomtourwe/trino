@@ -206,11 +206,6 @@ public class LanguageFunctionManager
         return getQueryFunctions(session).getFunctions(catalogHandle, name, languageFunctionLoader, identityLoader);
     }
 
-    public FunctionMetadata getFunctionMetadata(Session session, FunctionId functionId)
-    {
-        return getQueryFunctions(session).getFunctionMetadata(functionId);
-    }
-
     public FunctionId analyzeAndPlan(Session session, FunctionId functionId, AccessControl accessControl)
     {
         return getQueryFunctions(session).analyzeAndPlan(functionId, accessControl);
@@ -444,13 +439,6 @@ public class LanguageFunctionManager
             IrRoutine routine = data.irRoutine().orElseThrow();
             SpecializedSqlScalarFunction function = new SqlRoutineCompiler(functionManager, plannerContext.getMetadata(), typeManager).compile(data.charVarcharCoercion(), routine);
             return Optional.of(function.getScalarFunctionImplementation(invocationConvention));
-        }
-
-        public FunctionMetadata getFunctionMetadata(FunctionId functionId)
-        {
-            LanguageFunctionImplementation function = implementationsById.get(functionId);
-            checkArgument(function != null, "Unknown function implementation: %s", functionId);
-            return function.getFunctionMetadata();
         }
 
         public Map<FunctionId, LanguageFunctionData> serializeFunctionsForWorkers()

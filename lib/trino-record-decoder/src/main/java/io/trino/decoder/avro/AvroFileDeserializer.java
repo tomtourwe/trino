@@ -28,8 +28,6 @@ import static java.util.Objects.requireNonNull;
 public class AvroFileDeserializer<T>
         implements AvroDeserializer<T>
 {
-    public static final String NAME = "file";
-
     private final AvroReaderSupplier<T> avroReaderSupplier;
 
     public AvroFileDeserializer(AvroReaderSupplier<T> avroReaderSupplier)

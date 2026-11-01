@@ -60,11 +60,6 @@ public class LookupOuterOperator
             this.joinBridgeManager = joinBridgeManager;
         }
 
-        public int getOperatorId()
-        {
-            return operatorId;
-        }
-
         @Override
         public Operator createOperator(DriverContext driverContext)
         {

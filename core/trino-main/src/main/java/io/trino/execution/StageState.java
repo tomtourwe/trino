@@ -56,13 +56,11 @@ public enum StageState
     public static final Set<StageState> TERMINAL_STAGE_STATES = Stream.of(StageState.values()).filter(StageState::isDone).collect(toImmutableSet());
 
     private final boolean doneState;
-    private final boolean failureState;
 
     StageState(boolean doneState, boolean failureState)
     {
         checkArgument(!failureState || doneState, "%s is a non-done failure state", name());
         this.doneState = doneState;
-        this.failureState = failureState;
     }
 
     /**
@@ -71,14 +69,6 @@ public enum StageState
     public boolean isDone()
     {
         return doneState;
-    }
-
-    /**
-     * Is this a non-success terminal state.
-     */
-    public boolean isFailure()
-    {
-        return failureState;
     }
 
     /**

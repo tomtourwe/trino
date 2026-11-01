@@ -1475,42 +1475,6 @@ public final class MetadataManager
     }
 
     @Override
-    public List<QualifiedObjectName> listViews(Session session, QualifiedTablePrefix prefix)
-    {
-        requireNonNull(prefix, "prefix is null");
-        if (cannotExist(prefix)) {
-            return ImmutableList.of();
-        }
-
-        Optional<QualifiedObjectName> objectName = prefix.asQualifiedObjectName();
-        if (objectName.isPresent()) {
-            return isView(session, objectName.get())
-                    ? ImmutableList.of(objectName.get())
-                    : ImmutableList.of();
-        }
-
-        Optional<CatalogMetadata> catalog = getOptionalCatalogMetadata(session, prefix.getCatalogName());
-
-        Set<QualifiedObjectName> views = new LinkedHashSet<>();
-        if (catalog.isPresent()) {
-            CatalogMetadata catalogMetadata = catalog.get();
-
-            for (CatalogHandle catalogHandle : catalogMetadata.listCatalogHandles()) {
-                if (isExternalInformationSchema(catalogHandle, prefix.getSchemaName())) {
-                    continue;
-                }
-                ConnectorMetadata metadata = catalogMetadata.getMetadataFor(session, catalogHandle);
-                ConnectorSession connectorSession = session.toConnectorSession(catalogHandle);
-                metadata.listViews(connectorSession, prefix.getSchemaName()).stream()
-                        .map(convertFromSchemaTableName(prefix.getCatalogName()))
-                        .filter(view -> !isExternalInformationSchema(catalogHandle, view.schemaName()))
-                        .forEach(views::add);
-            }
-        }
-        return ImmutableList.copyOf(views);
-    }
-
-    @Override
     public Map<QualifiedObjectName, ViewInfo> getViews(Session session, QualifiedTablePrefix prefix)
     {
         requireNonNull(prefix, "prefix is null");

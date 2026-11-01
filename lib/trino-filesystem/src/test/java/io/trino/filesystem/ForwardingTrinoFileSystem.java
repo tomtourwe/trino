@@ -13,8 +13,6 @@
  */
 package io.trino.filesystem;
 
-import io.trino.spi.metrics.Metrics;
-
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Optional;
@@ -117,11 +115,5 @@ public abstract class ForwardingTrinoFileSystem
             throws IOException
     {
         return delegate.createTemporaryDirectory(targetPath, temporaryPrefix, relativePrefix);
-    }
-
-    @Override
-    public Metrics getMetrics()
-    {
-        return delegate.getMetrics();
     }
 }

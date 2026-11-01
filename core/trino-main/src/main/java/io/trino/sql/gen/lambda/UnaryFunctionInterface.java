@@ -14,8 +14,7 @@
 package io.trino.sql.gen.lambda;
 
 @FunctionalInterface
-public interface UnaryFunctionInterface
-        extends LambdaFunctionInterface
+public interface UnaryFunctionInterface 
 {
     Object apply(Object arg1);
 }

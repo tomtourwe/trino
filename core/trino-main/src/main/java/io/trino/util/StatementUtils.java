@@ -353,10 +353,5 @@ public final class StatementUtils
         {
             return queryType;
         }
-
-        public Class<? extends DataDefinitionTask<T>> getTaskType()
-        {
-            return taskType.orElseThrow(() -> new IllegalStateException(queryType + " does not have a task type"));
-        }
     }
 }

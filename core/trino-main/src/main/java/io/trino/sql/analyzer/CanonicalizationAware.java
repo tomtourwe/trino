@@ -41,11 +41,6 @@ public class CanonicalizationAware<T extends Node>
         return new CanonicalizationAware<T>(node);
     }
 
-    public T getNode()
-    {
-        return node;
-    }
-
     @Override
     public int hashCode()
     {

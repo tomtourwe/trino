@@ -16,7 +16,6 @@ package io.trino.parquet;
 import com.google.common.collect.ImmutableList;
 import io.trino.spi.TrinoException;
 import io.trino.spi.type.ArrayType;
-import io.trino.spi.type.DecimalType;
 import io.trino.spi.type.MapType;
 import io.trino.spi.type.RowType;
 import io.trino.spi.type.Type;
@@ -186,14 +185,6 @@ public final class ParquetTypeUtils
             }
         }
         return null;
-    }
-
-    public static Optional<DecimalType> createDecimalType(PrimitiveField field)
-    {
-        if (!(field.getDescriptor().getPrimitiveType().getLogicalTypeAnnotation() instanceof DecimalLogicalTypeAnnotation decimalLogicalType)) {
-            return Optional.empty();
-        }
-        return Optional.of(DecimalType.createDecimalType(decimalLogicalType.getPrecision(), decimalLogicalType.getScale()));
     }
 
     public static boolean isOptionalFieldValueNull(int definitionLevel, int maxDefinitionLevel)

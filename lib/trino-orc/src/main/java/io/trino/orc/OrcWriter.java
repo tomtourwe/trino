@@ -486,7 +486,6 @@ public final class OrcWriter
 
     public enum OrcOperation
     {
-        NONE(-1),
         INSERT(0),
         DELETE(2);
 

@@ -13,21 +13,9 @@
  */
 package io.trino.sql.analyzer;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.google.inject.Inject;
-import io.trino.Session;
-import io.trino.execution.warnings.WarningCollector;
-import io.trino.security.AllowAllAccessControl;
-import io.trino.spi.type.Type;
 import io.trino.sql.PlannerContext;
-import io.trino.sql.tree.Expression;
-import io.trino.sql.tree.NodeRef;
 
-import java.util.Map;
-
-import static io.trino.sql.analyzer.ExpressionAnalyzer.analyzeExpressions;
-import static io.trino.sql.analyzer.QueryType.OTHERS;
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -45,29 +33,5 @@ public class TypeAnalyzer
     {
         this.plannerContext = requireNonNull(plannerContext, "plannerContext is null");
         this.statementAnalyzerFactory = requireNonNull(statementAnalyzerFactory, "statementAnalyzerFactory is null");
-    }
-
-    public Map<NodeRef<Expression>, Type> getTypes(Session session, Iterable<Expression> expressions)
-    {
-        return analyzeExpressions(
-                session,
-                plannerContext,
-                statementAnalyzerFactory,
-                new AllowAllAccessControl(),
-                expressions,
-                ImmutableMap.of(),
-                WarningCollector.NOOP,
-                OTHERS)
-                .getExpressionTypes();
-    }
-
-    public Map<NodeRef<Expression>, Type> getTypes(Session session, Expression expression)
-    {
-        return getTypes(session, ImmutableList.of(expression));
-    }
-
-    public Type getType(Session session, Expression expression)
-    {
-        return getTypes(session, expression).get(NodeRef.of(expression));
     }
 }

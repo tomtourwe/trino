@@ -229,19 +229,9 @@ public class OrcReader
         return footer;
     }
 
-    public Metadata getMetadata()
-    {
-        return metadata;
-    }
-
     public OrcColumn getRootColumn()
     {
         return rootColumn;
-    }
-
-    public int getBufferSize()
-    {
-        return bufferSize;
     }
 
     public CompressionKind getCompressionKind()

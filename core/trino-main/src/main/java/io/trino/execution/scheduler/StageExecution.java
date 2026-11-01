@@ -125,13 +125,11 @@ public interface StageExecution
         FAILED(true, true);
 
         private final boolean doneState;
-        private final boolean failureState;
 
         State(boolean doneState, boolean failureState)
         {
             checkArgument(!failureState || doneState, "%s is a non-done failure state", name());
             this.doneState = doneState;
-            this.failureState = failureState;
         }
 
         /**
@@ -140,14 +138,6 @@ public interface StageExecution
         public boolean isDone()
         {
             return doneState;
-        }
-
-        /**
-         * Is this a non-success terminal state.
-         */
-        public boolean isFailure()
-        {
-            return failureState;
         }
 
         public boolean canScheduleMoreTasks()

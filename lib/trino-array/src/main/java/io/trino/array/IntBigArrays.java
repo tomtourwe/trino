@@ -61,17 +61,6 @@ public final class IntBigArrays
     }
 
     /**
-     * Sets the element of the given big array of specified index.
-     *
-     * @param array a big array.
-     * @param index a position in the big array.
-     */
-    public static void set(final int[][] array, final long index, int value)
-    {
-        array[segment(index)][displacement(index)] = value;
-    }
-
-    /**
      * Swaps the element of the given big array of specified indices.
      *
      * @param array a big array.

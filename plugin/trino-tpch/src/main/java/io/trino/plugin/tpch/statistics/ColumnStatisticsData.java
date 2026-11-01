@@ -31,11 +31,6 @@ public record ColumnStatisticsData(
         requireNonNull(dataSize, "dataSize is null");
     }
 
-    public static ColumnStatisticsData empty()
-    {
-        return new ColumnStatisticsData(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-    }
-
     public static ColumnStatisticsData zero()
     {
         return new ColumnStatisticsData(Optional.of(0L), Optional.empty(), Optional.empty(), Optional.of(0L));

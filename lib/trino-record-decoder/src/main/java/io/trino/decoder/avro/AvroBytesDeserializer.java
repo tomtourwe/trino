@@ -27,8 +27,6 @@ import static java.util.Objects.requireNonNull;
 public class AvroBytesDeserializer<T>
         implements AvroDeserializer<T>
 {
-    public static final String NAME = "bytes";
-
     private static final ThreadLocal<BinaryDecoder> reuseDecoder = ThreadLocal.withInitial(() -> null);
 
     private final AvroReaderSupplier<T> avroReaderSupplier;

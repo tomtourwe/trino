@@ -509,11 +509,6 @@ public interface Metadata
     List<CatalogInfo> listActiveCatalogs(Session session);
 
     /**
-     * Get the names that match the specified table prefix (never null).
-     */
-    List<QualifiedObjectName> listViews(Session session, QualifiedTablePrefix prefix);
-
-    /**
      * Get the view definitions that match the specified table prefix (never null).
      */
     Map<QualifiedObjectName, ViewInfo> getViews(Session session, QualifiedTablePrefix prefix);

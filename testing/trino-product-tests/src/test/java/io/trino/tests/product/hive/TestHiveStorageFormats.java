@@ -775,24 +775,21 @@ class TestHiveStorageFormats
                 MILLISECONDS, milliReadValue,
                 MICROSECONDS, microReadValue,
                 NANOSECONDS, nanoReadValue);
-        return new TimestampAndPrecision(precision, writeValue, readValues);
+        return new TimestampAndPrecision(writeValue, readValues);
     }
 
     private static class TimestampAndPrecision
     {
         private static int counter;
         private final int id;
-        // precision used when writing the data
-        private final HiveTimestampPrecision precision;
         // inserted value
         private final String writeValue;
         // expected values to be read back at various precisions
         private final Map<HiveTimestampPrecision, String> readValues;
 
-        public TimestampAndPrecision(HiveTimestampPrecision precision, String writeValue, Map<HiveTimestampPrecision, String> readValues)
+        public TimestampAndPrecision(String writeValue, Map<HiveTimestampPrecision, String> readValues)
         {
             this.id = counter++;
-            this.precision = precision;
             this.writeValue = writeValue;
             this.readValues = readValues;
         }
@@ -800,11 +797,6 @@ class TestHiveStorageFormats
         public int getId()
         {
             return id;
-        }
-
-        public HiveTimestampPrecision getPrecision()
-        {
-            return precision;
         }
 
         public String getWriteValue()

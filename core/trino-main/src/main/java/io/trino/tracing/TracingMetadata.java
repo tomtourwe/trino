@@ -922,15 +922,6 @@ public class TracingMetadata
     }
 
     @Override
-    public List<QualifiedObjectName> listViews(Session session, QualifiedTablePrefix prefix)
-    {
-        Span span = startSpan("listViews", prefix);
-        try (var _ = scopedSpan(span)) {
-            return delegate.listViews(session, prefix);
-        }
-    }
-
-    @Override
     public Map<QualifiedObjectName, ViewInfo> getViews(Session session, QualifiedTablePrefix prefix)
     {
         Span span = startSpan("getViews", prefix);

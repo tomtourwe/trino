@@ -149,60 +149,6 @@ public class Long2LongOpenBigHashMap
         this(BigArrays.SEGMENT_SIZE, DEFAULT_LOAD_FACTOR);
     }
 
-    /**
-     * Creates a new hash map copying a given one.
-     *
-     * @param m a {@link Map} to be copied into the new hash map.
-     * @param f the load factor.
-     */
-    public Long2LongOpenBigHashMap(final Map<? extends Long, ? extends Long> m, final float f)
-    {
-        this(m.size(), f);
-        putAll(m);
-    }
-
-    /**
-     * Creates a new hash map with {@link Hash#DEFAULT_LOAD_FACTOR} as load factor
-     * copying a given one.
-     *
-     * @param m a {@link Map} to be copied into the new hash map.
-     */
-    public Long2LongOpenBigHashMap(final Map<? extends Long, ? extends Long> m)
-    {
-        this(m, DEFAULT_LOAD_FACTOR);
-    }
-
-    /**
-     * Creates a new hash map copying a given type-specific one.
-     *
-     * @param m a type-specific map to be copied into the new hash map.
-     * @param f the load factor.
-     */
-    public Long2LongOpenBigHashMap(final Long2LongMap m, final float f)
-    {
-        this(m.size(), f);
-        putAll(m);
-    }
-
-    /**
-     * Creates a new hash map with {@link Hash#DEFAULT_LOAD_FACTOR} as load factor
-     * copying a given type-specific one.
-     *
-     * @param m a type-specific map to be copied into the new hash map.
-     */
-    public Long2LongOpenBigHashMap(final Long2LongMap m)
-    {
-        this(m, DEFAULT_LOAD_FACTOR);
-    }
-
-    /**
-     * Returns the size of this hash map in bytes.
-     */
-    public long sizeOf()
-    {
-        return INSTANCE_SIZE + key.sizeOf() + value.sizeOf();
-    }
-
     private long realSize()
     {
         return containsNullKey ? size - 1 : size;

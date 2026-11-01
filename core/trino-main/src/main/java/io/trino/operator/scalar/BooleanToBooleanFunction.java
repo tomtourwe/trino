@@ -13,11 +13,8 @@
  */
 package io.trino.operator.scalar;
 
-import io.trino.sql.gen.lambda.LambdaFunctionInterface;
-
 @FunctionalInterface
-public interface BooleanToBooleanFunction
-        extends LambdaFunctionInterface
+public interface BooleanToBooleanFunction 
 {
     Boolean apply(Boolean value);
 }

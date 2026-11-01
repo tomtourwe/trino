@@ -205,12 +205,6 @@ public class FailedDispatchQuery
         return DataSize.ofBytes(0);
     }
 
-    @Override
-    public DataSize getUserMemoryReservation()
-    {
-        return DataSize.ofBytes(0);
-    }
-
     private static QueryInfo immediateFailureQueryInfo(
             Session session,
             String query,

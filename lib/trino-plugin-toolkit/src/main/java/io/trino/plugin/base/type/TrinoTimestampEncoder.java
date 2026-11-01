@@ -14,13 +14,10 @@
 package io.trino.plugin.base.type;
 
 import io.trino.spi.block.BlockBuilder;
-import io.trino.spi.type.TimestampType;
 
 public interface TrinoTimestampEncoder<T>
 {
     void write(DecodedTimestamp decodedTimestamp, BlockBuilder blockBuilder);
 
     T getTimestamp(DecodedTimestamp decodedTimestamp);
-
-    TimestampType getType();
 }

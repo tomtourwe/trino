@@ -96,7 +96,6 @@ public class OrcRecordReader
     private long maxCombinedBytesPerRow;
 
     private final long totalRowCount;
-    private final long splitLength;
     private final long totalDataLength;
     private final long maxBlockBytes;
     private final ColumnMetadata<OrcType> orcTypes;
@@ -245,7 +244,6 @@ public class OrcRecordReader
         this.orcDataSource = orcDataSource;
         this.orcDataSourceMemoryUsage = memoryUsage.newLocalMemoryContext(OrcDataSource.class.getSimpleName());
         this.orcDataSourceMemoryUsage.setBytes(orcDataSource.getRetainedSize());
-        this.splitLength = splitLength;
 
         this.fileRowCount = stripeInfos.stream()
                 .map(StripeInfo::getStripe)
@@ -357,11 +355,6 @@ public class OrcRecordReader
         return totalRowCount;
     }
 
-    public long getSplitLength()
-    {
-        return splitLength;
-    }
-
     public long getTotalDataLength()
     {
         return totalDataLength;
@@ -373,11 +366,6 @@ public class OrcRecordReader
     public long getMaxCombinedBytesPerRow()
     {
         return maxCombinedBytesPerRow;
-    }
-
-    public ColumnMetadata<OrcType> getColumnTypes()
-    {
-        return orcTypes;
     }
 
     public OptionalLong getStartRowPosition()
@@ -647,11 +635,6 @@ public class OrcRecordReader
             maxBytesPerCell[columnIndex] = currentBytesPerCell[columnIndex];
             maxBatchSize = toIntExact(min(maxBatchSize, max(1, maxBlockBytes / maxCombinedBytesPerRow)));
         }
-    }
-
-    public Map<String, Slice> getUserMetadata()
-    {
-        return ImmutableMap.copyOf(Maps.transformValues(userMetadata, Slice::copy));
     }
 
     private boolean advanceToNextRowGroup()

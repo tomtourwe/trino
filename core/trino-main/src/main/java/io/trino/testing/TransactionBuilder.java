@@ -69,16 +69,6 @@ public class TransactionBuilder
         return withIsolationLevel(IsolationLevel.READ_COMMITTED);
     }
 
-    public TransactionBuilder repeatableRead()
-    {
-        return withIsolationLevel(IsolationLevel.REPEATABLE_READ);
-    }
-
-    public TransactionBuilder serializable()
-    {
-        return withIsolationLevel(IsolationLevel.SERIALIZABLE);
-    }
-
     public TransactionBuilder readOnly()
     {
         readOnly = true;

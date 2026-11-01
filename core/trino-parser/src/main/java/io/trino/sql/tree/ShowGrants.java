@@ -32,11 +32,6 @@ public class ShowGrants
         this.grantObject = grantObject == null ? Optional.empty() : grantObject;
     }
 
-    public Optional<String> getEntityKind()
-    {
-        return grantObject.flatMap(GrantObject::getEntityKind);
-    }
-
     public Optional<GrantObject> getGrantObject()
     {
         return grantObject;

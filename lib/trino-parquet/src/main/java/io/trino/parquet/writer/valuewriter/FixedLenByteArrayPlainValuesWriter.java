@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static java.lang.String.format;
 
 /**
  * PLAIN encoder for FIXED_LEN_BYTE_ARRAY which writes into a Slice, avoiding a per-value Binary on the write path.
@@ -82,12 +81,6 @@ public final class FixedLenByteArrayPlainValuesWriter
     {
         checkArgument(valueLength == length, "Fixed binary size %s does not match field type length %s", valueLength, length);
         sliceOutput.writeBytes(base, offset, valueLength);
-    }
-
-    @Override
-    public String memUsageString(String prefix)
-    {
-        return format("%s FixedLenByteArrayPlainValuesWriter %d bytes", prefix, sliceOutput.getRetainedSize());
     }
 
     @Override

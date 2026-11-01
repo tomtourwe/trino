@@ -32,11 +32,6 @@ public class UpdateAssignment
         this(Optional.empty(), name, value);
     }
 
-    public UpdateAssignment(NodeLocation location, Identifier name, Expression value)
-    {
-        this(Optional.of(location), name, value);
-    }
-
     private UpdateAssignment(Optional<NodeLocation> location, Identifier name, Expression value)
     {
         super(location);

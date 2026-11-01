@@ -27,11 +27,6 @@ public class PagesIndexOrdering
         this.comparator = requireNonNull(comparator, "comparator is null");
     }
 
-    public PagesIndexComparator getComparator()
-    {
-        return comparator;
-    }
-
     public void sort(PagesIndex pagesIndex, int startPosition, int endPosition)
     {
         quickSort(pagesIndex, startPosition, endPosition);

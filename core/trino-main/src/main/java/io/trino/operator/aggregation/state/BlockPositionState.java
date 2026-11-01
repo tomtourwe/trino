@@ -28,16 +28,4 @@ public interface BlockPositionState
     void setBlock(Block value);
 
     void setPosition(int position);
-
-    default boolean isNull()
-    {
-        Block block = getBlock();
-        return block == null || block.isNull(getPosition());
-    }
-
-    default void set(BlockPositionState state)
-    {
-        setBlock(state.getBlock());
-        setPosition(state.getPosition());
-    }
 }

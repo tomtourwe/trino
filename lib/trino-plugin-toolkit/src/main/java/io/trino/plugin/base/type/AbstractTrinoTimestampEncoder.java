@@ -29,10 +29,4 @@ abstract class AbstractTrinoTimestampEncoder<T extends Comparable<T>>
         this.type = requireNonNull(type, "type is null");
         this.timeZone = requireNonNull(timeZone, "timeZone is null");
     }
-
-    @Override
-    public TimestampType getType()
-    {
-        return type;
-    }
 }

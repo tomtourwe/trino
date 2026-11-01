@@ -90,20 +90,6 @@ public class WhenClause
         return match;
     }
 
-    /// Returns the value-expression match side — a boolean condition for searched CASE, or an
-    /// equality target for simple CASE. Throws when this clause carries an F262 predicate fragment
-    /// instead.
-    ///
-    /// @deprecated Prefer [#getMatch()] and pattern-match on the [Match] variant.
-    @Deprecated
-    public Expression getOperand()
-    {
-        if (match instanceof Operand operand) {
-            return operand.expression();
-        }
-        throw new IllegalStateException("WhenClause is a predicate-fragment match, not an operand: " + match);
-    }
-
     public Expression getResult()
     {
         return result;

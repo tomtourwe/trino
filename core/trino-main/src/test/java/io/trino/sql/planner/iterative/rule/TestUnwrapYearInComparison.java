@@ -37,8 +37,6 @@ import io.trino.type.DateTimes;
 import io.trino.util.DateTimeUtils;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-
 import static io.airlift.slice.Slices.utf8Slice;
 import static io.trino.SessionTestUtils.TEST_SESSION;
 import static io.trino.SystemSessionProperties.FUNCTION_PREIMAGES_ENABLED;
@@ -50,8 +48,6 @@ import static io.trino.spi.type.DateType.DATE;
 import static io.trino.spi.type.DoubleType.DOUBLE;
 import static io.trino.spi.type.TimestampType.TIMESTAMP_MILLIS;
 import static io.trino.spi.type.TimestampType.createTimestampType;
-import static io.trino.spi.type.Timestamps.MICROSECONDS_PER_SECOND;
-import static io.trino.spi.type.Timestamps.NANOSECONDS_PER_MICROSECOND;
 import static io.trino.sql.analyzer.TypeDescriptorProvider.fromTypes;
 import static io.trino.sql.ir.ComparisonOperator.EQUAL;
 import static io.trino.sql.ir.ComparisonOperator.GREATER_THAN;
@@ -65,9 +61,7 @@ import static io.trino.sql.planner.TestingSymbolAllocator.emptySymbolAllocator;
 import static io.trino.sql.planner.assertions.PlanMatchPattern.filter;
 import static io.trino.sql.planner.assertions.PlanMatchPattern.output;
 import static io.trino.sql.planner.assertions.PlanMatchPattern.values;
-import static java.lang.Math.multiplyExact;
 import static java.lang.String.format;
-import static java.time.ZoneOffset.UTC;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -415,12 +409,6 @@ public class TestUnwrapYearInComparison
                         new Logical(OR, ImmutableList.of(
                                 letBetween(operand, "2019-01-01 00:00:00.000", "2019-12-31 23:59:59.999"),
                                 letBetween(operand, "2021-01-01 00:00:00.000", "2021-12-31 23:59:59.999")))));
-    }
-
-    private static long toEpochMicros(LocalDateTime localDateTime)
-    {
-        return multiplyExact(localDateTime.toEpochSecond(UTC), MICROSECONDS_PER_SECOND)
-                + localDateTime.getNano() / NANOSECONDS_PER_MICROSECOND;
     }
 
     private void testUnwrap(String inputType, String inputPredicate, Expression expected)

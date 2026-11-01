@@ -30,9 +30,4 @@ public class QueryQueueFullException
         super(QUERY_QUEUE_FULL, format("Too many queued queries for \"%s\"", resourceGroup));
         this.resourceGroup = requireNonNull(resourceGroup, "resourceGroup is null");
     }
-
-    public ResourceGroupId getResourceGroup()
-    {
-        return resourceGroup;
-    }
 }

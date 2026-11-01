@@ -20,7 +20,6 @@ import com.google.errorprone.annotations.Immutable;
 import java.util.Objects;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
-import static io.airlift.slice.SizeOf.estimatedSizeOf;
 import static io.airlift.slice.SizeOf.instanceSize;
 import static java.util.Objects.requireNonNull;
 
@@ -77,10 +76,5 @@ public class FileStatus
                 .add("filePath", filePath)
                 .add("fileSize", fileSize)
                 .toString();
-    }
-
-    public long getRetainedSizeInBytes()
-    {
-        return INSTANCE_SIZE + estimatedSizeOf(filePath);
     }
 }

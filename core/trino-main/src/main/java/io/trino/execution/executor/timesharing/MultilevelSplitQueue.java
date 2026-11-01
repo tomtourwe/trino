@@ -246,20 +246,6 @@ public class MultilevelSplitQueue
         return new Priority(newLevel, newLevelMinPriority + remainingTaskTime);
     }
 
-    public void remove(PrioritizedSplitRunner split)
-    {
-        checkArgument(split != null, "split is null");
-        lock.lock();
-        try {
-            for (PriorityQueue<PrioritizedSplitRunner> level : levelWaitingSplits) {
-                level.remove(split);
-            }
-        }
-        finally {
-            lock.unlock();
-        }
-    }
-
     public void removeAll(Collection<PrioritizedSplitRunner> splits)
     {
         lock.lock();

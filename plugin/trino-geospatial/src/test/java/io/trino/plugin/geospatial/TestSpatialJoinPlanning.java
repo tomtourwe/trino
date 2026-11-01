@@ -46,7 +46,6 @@ import org.junit.jupiter.api.TestInstance;
 import java.util.List;
 import java.util.Optional;
 
-import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Strings.nullToEmpty;
 import static io.trino.SessionTestUtils.TEST_SESSION;
 import static io.trino.SystemSessionProperties.SPATIAL_PARTITIONING_TABLE_NAME;
@@ -568,12 +567,6 @@ public class TestSpatialJoinPlanning
         return Session.builder(this.getPlanTester().getDefaultSession())
                 .setSystemProperty(SPATIAL_PARTITIONING_TABLE_NAME, tableName)
                 .build();
-    }
-
-    private static String doubleLiteral(double value)
-    {
-        checkArgument(Double.isFinite(value));
-        return format("%.16E", value);
     }
 
     private Call functionCall(String name, List<Type> types, List<Expression> arguments)

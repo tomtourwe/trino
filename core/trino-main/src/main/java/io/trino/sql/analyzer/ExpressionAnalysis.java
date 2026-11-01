@@ -101,9 +101,4 @@ public class ExpressionAnalysis
     {
         return uniquePredicates;
     }
-
-    public Set<NodeRef<FunctionCall>> getWindowFunctions()
-    {
-        return windowFunctions;
-    }
 }

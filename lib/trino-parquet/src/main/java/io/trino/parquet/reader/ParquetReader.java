@@ -1358,11 +1358,6 @@ public class ParquetReader
         return columnReader;
     }
 
-    public List<Column> getColumnFields()
-    {
-        return columnFields;
-    }
-
     public Metrics getMetrics()
     {
         ImmutableMap.Builder<String, Metric<?>> metrics = ImmutableMap.<String, Metric<?>>builder()

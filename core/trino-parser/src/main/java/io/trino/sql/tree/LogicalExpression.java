@@ -28,14 +28,6 @@ public class LogicalExpression
     public enum Operator
     {
         AND, OR;
-
-        public Operator flip()
-        {
-            return switch (this) {
-                case AND -> OR;
-                case OR -> AND;
-            };
-        }
     }
 
     private final Operator operator;
@@ -85,11 +77,6 @@ public class LogicalExpression
     public static LogicalExpression and(Expression left, Expression right)
     {
         return new LogicalExpression(Optional.empty(), Operator.AND, ImmutableList.of(left, right));
-    }
-
-    public static LogicalExpression or(Expression left, Expression right)
-    {
-        return new LogicalExpression(Optional.empty(), Operator.OR, ImmutableList.of(left, right));
     }
 
     @Override

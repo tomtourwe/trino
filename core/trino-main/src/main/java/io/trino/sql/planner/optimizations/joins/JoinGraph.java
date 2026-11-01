@@ -95,11 +95,6 @@ public class JoinGraph
         return filters;
     }
 
-    public boolean isEmpty()
-    {
-        return nodes.isEmpty();
-    }
-
     public int size()
     {
         return nodes.size();

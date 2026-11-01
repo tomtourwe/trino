@@ -168,31 +168,6 @@ public class DictionaryFallbackValuesWriter
     }
 
     @Override
-    public String memUsageString(String prefix)
-    {
-        return String.format(
-                """
-                %s FallbackValuesWriter{
-                %s
-                %s
-                %s}
-                """,
-                prefix,
-                initialWriter != null ? initialWriter.memUsageString(prefix + " initial:") : "",
-                fallBackWriter.memUsageString(prefix + " fallback:"),
-                prefix);
-    }
-
-    // passthrough writing the value
-    @Override
-    public void writeByte(int value)
-    {
-        rawDataByteSize += Byte.BYTES;
-        currentWriter.writeByte(value);
-        checkFallback();
-    }
-
-    @Override
     public void writeBytes(Slice value)
     {
         // For raw data, length(4 bytes int) is stored, followed by the binary content itself

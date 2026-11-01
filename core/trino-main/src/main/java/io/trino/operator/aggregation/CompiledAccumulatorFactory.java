@@ -42,12 +42,6 @@ public class CompiledAccumulatorFactory
     }
 
     @Override
-    public List<Class<?>> getLambdaInterfaces()
-    {
-        return lambdaInterfaces;
-    }
-
-    @Override
     public Accumulator createAccumulator(List<Supplier<Object>> lambdaProviders)
     {
         try {

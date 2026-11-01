@@ -102,21 +102,10 @@ public final class PolymorphicScalarFunctionBuilder
         return this;
     }
 
-    public PolymorphicScalarFunctionBuilder hidden()
-    {
-        this.hidden = true;
-        return this;
-    }
-
     public PolymorphicScalarFunctionBuilder deterministic(boolean deterministic)
     {
         this.deterministic = deterministic;
         return this;
-    }
-
-    public PolymorphicScalarFunctionBuilder neverFails(boolean neverFails)
-    {
-        return neverFails(neverFails ? _ -> true : _ -> false);
     }
 
     public PolymorphicScalarFunctionBuilder neverFails(Predicate<BoundSignature> neverFails)
@@ -171,23 +160,6 @@ public final class PolymorphicScalarFunctionBuilder
                 choices);
     }
 
-    @SafeVarargs
-    public static Function<SpecializeContext, List<Object>> concat(Function<SpecializeContext, List<Object>>... extraParametersFunctions)
-    {
-        return context -> {
-            ImmutableList.Builder<Object> extraParametersBuilder = ImmutableList.builder();
-            for (Function<SpecializeContext, List<Object>> extraParametersFunction : extraParametersFunctions) {
-                extraParametersBuilder.addAll(extraParametersFunction.apply(context));
-            }
-            return extraParametersBuilder.build();
-        };
-    }
-
-    public static <T> Function<SpecializeContext, List<Object>> constant(T value)
-    {
-        return _ -> ImmutableList.of(value);
-    }
-
     public static final class SpecializeContext
     {
         private final FunctionBinding functionBinding;
@@ -195,11 +167,6 @@ public final class PolymorphicScalarFunctionBuilder
         SpecializeContext(FunctionBinding functionBinding)
         {
             this.functionBinding = requireNonNull(functionBinding, "functionBinding is null");
-        }
-
-        public Type getType(String name)
-        {
-            return functionBinding.variables().getTypeVariable(name);
         }
 
         public Long getLiteral(String name)

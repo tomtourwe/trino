@@ -74,13 +74,6 @@ class PreferredProperties
                 .build();
     }
 
-    public static PreferredProperties distributed()
-    {
-        return builder()
-                .global(Global.distributed())
-                .build();
-    }
-
     public static PreferredProperties partitioned(Partitioning partitioning)
     {
         return builder()
@@ -99,13 +92,6 @@ class PreferredProperties
     {
         return builder()
                 .global(Global.distributed(PartitioningProperties.partitioned(columns)))
-                .local(localProperties)
-                .build();
-    }
-
-    public static PreferredProperties local(List<? extends LocalProperty<Symbol>> localProperties)
-    {
-        return builder()
                 .local(localProperties)
                 .build();
     }
@@ -173,21 +159,9 @@ class PreferredProperties
             return this;
         }
 
-        public Builder global(PreferredProperties other)
-        {
-            this.globalProperties = other.globalProperties;
-            return this;
-        }
-
         public Builder local(List<? extends LocalProperty<Symbol>> localProperties)
         {
             this.localProperties = ImmutableList.copyOf(localProperties);
-            return this;
-        }
-
-        public Builder local(PreferredProperties other)
-        {
-            this.localProperties = ImmutableList.copyOf(other.localProperties);
             return this;
         }
 
@@ -217,11 +191,6 @@ class PreferredProperties
         public static Global distributed(Optional<PartitioningProperties> partitioningProperties)
         {
             return new Global(true, partitioningProperties);
-        }
-
-        public static Global distributed()
-        {
-            return distributed(Optional.empty());
         }
 
         public static Global distributed(PartitioningProperties partitioning)

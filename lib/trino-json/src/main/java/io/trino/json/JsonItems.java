@@ -64,7 +64,6 @@ import io.trino.spi.type.VarcharType;
 import org.gaul.modernizer_maven_annotations.SuppressModernizer;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
@@ -169,27 +168,6 @@ public final class JsonItems
         }
         catch (IOException e) {
             throw new TrinoException(StandardErrorCode.INVALID_FUNCTION_ARGUMENT, "invalid JSON: " + e.getMessage(), e);
-        }
-    }
-
-    /// Parses UTF-8 text from an [InputStream]. Callers with another explicitly
-    /// specified encoding must decode it first and use [#fromText(Reader)].
-    public static Json fromText(InputStream input)
-            throws JsonProcessingException, IOException
-    {
-        try (JsonParser parser = MAPPER.getFactory().createParser(new InputStreamReader(input, UTF_8))) {
-            return parseStream(parser);
-        }
-    }
-
-    /// Same streaming-parse contract as [#fromText] but consumes a [Reader] —
-    /// avoids buffering the input as a single `String` for callers that already have an
-    /// encoding-specific [Reader] (e.g. JSON_VALUE / JSON_QUERY / JSON_OBJECT).
-    public static Json fromText(Reader reader)
-            throws JsonProcessingException, IOException
-    {
-        try (JsonParser parser = MAPPER.getFactory().createParser(reader)) {
-            return parseStream(parser);
         }
     }
 

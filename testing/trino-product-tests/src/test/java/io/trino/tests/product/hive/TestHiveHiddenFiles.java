@@ -98,11 +98,6 @@ class TestHiveHiddenFiles
         hdfsClient.delete(directoryLocation + "/" + filename);
     }
 
-    private String getTableLocation(HiveBasicEnvironment env, String tableName)
-    {
-        return getTableLocation(env, tableName, 0);
-    }
-
     private String getTableLocation(HiveBasicEnvironment env, String tableName, int partitionColumns)
     {
         StringBuilder regex = new StringBuilder("/[^/]*$");

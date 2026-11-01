@@ -104,12 +104,6 @@ public class PartitionedLookupSource
     }
 
     @Override
-    public boolean isEmpty()
-    {
-        return Arrays.stream(lookupSources).allMatch(LookupSource::isEmpty);
-    }
-
-    @Override
     public long getJoinPositionCount()
     {
         return Arrays.stream(lookupSources)
@@ -291,7 +285,7 @@ public class PartitionedLookupSource
 
             public OuterPositionTracker create()
             {
-                return new OuterPositionTracker(visitedPositions, finished, referenceCount);
+                return new OuterPositionTracker(finished, referenceCount);
             }
 
             public OuterPositionIterator getOuterPositionIterator()
@@ -302,15 +296,12 @@ public class PartitionedLookupSource
                 return new PartitionedLookupOuterPositionIterator(lookupSources, visitedPositions);
             }
         }
-
-        private final boolean[][] visitedPositions; // shared across multiple operators/drivers
         private final AtomicBoolean finished; // shared across multiple operators/drivers
         private final AtomicLong referenceCount; // shared across multiple operators/drivers
         private boolean written; // unique per each operator/driver
 
-        private OuterPositionTracker(boolean[][] visitedPositions, AtomicBoolean finished, AtomicLong referenceCount)
+        private OuterPositionTracker(AtomicBoolean finished, AtomicLong referenceCount)
         {
-            this.visitedPositions = visitedPositions;
             this.finished = finished;
             this.referenceCount = referenceCount;
         }
@@ -325,7 +316,6 @@ public class PartitionedLookupSource
                 verify(!finished.get());
                 referenceCount.incrementAndGet();
             }
-            visitedPositions[partition][position] = true;
         }
 
         public void commit()

@@ -15,7 +15,6 @@ package io.trino.operator;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMultiset;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.util.concurrent.ListenableFuture;
 import io.airlift.units.Duration;
 import io.trino.spi.Page;
@@ -24,18 +23,14 @@ import io.trino.spi.type.RowType;
 import io.trino.spi.type.Type;
 import io.trino.testing.MaterializedResult;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.stream.IntStream;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Throwables.throwIfUnchecked;
-import static com.google.common.collect.ImmutableList.toImmutableList;
 import static io.airlift.concurrent.MoreFutures.getFutureValue;
 import static io.airlift.concurrent.MoreFutures.tryGetFutureValue;
 import static io.trino.operator.PageAssertions.assertPagesEqual;
@@ -311,15 +306,5 @@ public final class OperatorAssertion
         catch (TimeoutException expected) {
             return false;
         }
-    }
-
-    public static <T> List<T> without(List<T> list, Collection<Integer> indexes)
-    {
-        Set<Integer> indexesSet = ImmutableSet.copyOf(indexes);
-
-        return IntStream.range(0, list.size())
-                .filter(index -> !indexesSet.contains(index))
-                .mapToObj(list::get)
-                .collect(toImmutableList());
     }
 }

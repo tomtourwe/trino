@@ -23,21 +23,6 @@ public final class Patterns
 {
     private Patterns() {}
 
-    public static Pattern<JoinNode> join()
-    {
-        return typeOf(JoinNode.class);
-    }
-
-    public static Property<JoinNode, ?, RelNode> build()
-    {
-        return property("build", JoinNode::getBuild);
-    }
-
-    public static Property<JoinNode, ?, RelNode> probe()
-    {
-        return property("probe", JoinNode::getProbe);
-    }
-
     public static Pattern<ScanNode> scan()
     {
         return typeOf(ScanNode.class);

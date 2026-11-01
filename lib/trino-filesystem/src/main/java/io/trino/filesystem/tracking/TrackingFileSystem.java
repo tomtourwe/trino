@@ -21,7 +21,6 @@ import io.trino.filesystem.TrinoInputFile;
 import io.trino.filesystem.TrinoOutputFile;
 import io.trino.filesystem.UriLocation;
 import io.trino.filesystem.encryption.EncryptionKey;
-import io.trino.spi.metrics.Metrics;
 
 import java.io.IOException;
 import java.lang.ref.Cleaner;
@@ -181,11 +180,5 @@ public class TrackingFileSystem
             throws IOException
     {
         return delegate.encryptedPreSignedUri(location, ttl, key);
-    }
-
-    @Override
-    public Metrics getMetrics()
-    {
-        return delegate.getMetrics();
     }
 }

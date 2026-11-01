@@ -26,10 +26,7 @@ import io.trino.tests.product.TestGroup;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
 import java.sql.Date;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1680,28 +1677,6 @@ class TestHiveCoercionOnPartitionedTable
                 .collect(toImmutableList());
     }
 
-    private static void setHiveTimestampPrecision(HiveStorageFormatsEnvironment env, HiveTimestampPrecision hiveTimestampPrecision)
-    {
-        try (Connection conn = env.createTrinoConnection();
-                Statement stmt = conn.createStatement()) {
-            stmt.execute("SET SESSION hive.timestamp_precision = '" + hiveTimestampPrecision.name() + "'");
-        }
-        catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void resetHiveTimestampPrecision(HiveStorageFormatsEnvironment env)
-    {
-        try (Connection conn = env.createTrinoConnection();
-                Statement stmt = conn.createStatement()) {
-            stmt.execute("RESET SESSION hive.timestamp_precision");
-        }
-        catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     private static io.trino.testing.containers.environment.Row row(Object... values)
     {
         return io.trino.testing.containers.environment.Row.row(values);
@@ -1710,11 +1685,6 @@ class TestHiveCoercionOnPartitionedTable
     private static ColumnContext columnContext(String version, String format, String column)
     {
         return new ColumnContext(Optional.of(version), format, column);
-    }
-
-    private static ColumnContext columnContext(String format, String column)
-    {
-        return new ColumnContext(Optional.empty(), format, column);
     }
 
     private record ColumnContext(Optional<String> hiveVersion, String format, String column) {}

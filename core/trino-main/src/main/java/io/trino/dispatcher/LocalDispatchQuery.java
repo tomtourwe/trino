@@ -254,14 +254,6 @@ public class LocalDispatchQuery
     }
 
     @Override
-    public DataSize getUserMemoryReservation()
-    {
-        return tryGetQueryExecution()
-                .map(QueryExecution::getUserMemoryReservation)
-                .orElseGet(() -> DataSize.ofBytes(0));
-    }
-
-    @Override
     public BasicQueryInfo getBasicQueryInfo()
     {
         return tryGetQueryExecution()

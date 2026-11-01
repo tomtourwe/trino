@@ -17,11 +17,6 @@ import jakarta.annotation.Nullable;
 
 public abstract class IrJsonPathVisitor<R, C>
 {
-    public R process(IrPathNode node)
-    {
-        return process(node, null);
-    }
-
     public R process(IrPathNode node, @Nullable C context)
     {
         return node.accept(this, context);

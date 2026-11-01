@@ -79,11 +79,6 @@ public class TestingAggregationFunction
         return parameterTypes.size();
     }
 
-    public List<Type> getParameterTypes()
-    {
-        return parameterTypes;
-    }
-
     public Type getIntermediateType()
     {
         return intermediateType;

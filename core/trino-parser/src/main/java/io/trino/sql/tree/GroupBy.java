@@ -17,29 +17,14 @@ import com.google.common.collect.ImmutableList;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
-import static java.util.Objects.requireNonNull;
 
 public class GroupBy
         extends Node
 {
     private final boolean isDistinct;
     private final List<GroupingElement> groupingElements;
-
-    @Deprecated
-    public GroupBy(boolean isDistinct, List<GroupingElement> groupingElements)
-    {
-        this(Optional.empty(), isDistinct, groupingElements);
-    }
-
-    private GroupBy(Optional<NodeLocation> location, boolean isDistinct, List<GroupingElement> groupingElements)
-    {
-        super(location);
-        this.isDistinct = isDistinct;
-        this.groupingElements = ImmutableList.copyOf(requireNonNull(groupingElements));
-    }
 
     public GroupBy(NodeLocation location, boolean isDistinct, List<GroupingElement> groupingElements)
     {

@@ -64,19 +64,4 @@ public class OperatorNotFoundException
                     Joiner.on(", ").join(argumentTypes));
         };
     }
-
-    public OperatorType getOperatorType()
-    {
-        return operatorType;
-    }
-
-    public Type getReturnType()
-    {
-        return returnType;
-    }
-
-    public List<Type> getArgumentTypes()
-    {
-        return argumentTypes;
-    }
 }

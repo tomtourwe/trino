@@ -25,7 +25,6 @@ import io.trino.filesystem.encryption.EncryptionKey;
 import io.trino.filesystem.metrics.MeasuredTrinoFileSystem;
 import io.trino.plugin.base.metrics.ApiCallStats;
 import io.trino.plugin.iceberg.IcebergStorageCredentials;
-import io.trino.spi.metrics.Metrics;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -216,13 +215,6 @@ public class IcebergRestCatalogFileSystem
             throws IOException
     {
         return fileSystem(location).encryptedPreSignedUri(location, ttl, key);
-    }
-
-    @Override
-    public Metrics getMetrics()
-    {
-        // The file system is chosen per location, so there is no single delegate to report from
-        return Metrics.EMPTY;
     }
 
     private TrinoFileSystem fileSystem(Location location)

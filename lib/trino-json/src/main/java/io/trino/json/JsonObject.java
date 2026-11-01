@@ -150,12 +150,6 @@ public final class JsonObject
         return materialize().length();
     }
 
-    @VisibleForTesting
-    public boolean isMaterialized()
-    {
-        return encoded != null;
-    }
-
     private Slice materialize()
     {
         // Racy single-check on a volatile field: encodeTree is deterministic, so concurrent

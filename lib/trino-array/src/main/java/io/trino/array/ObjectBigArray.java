@@ -109,17 +109,6 @@ public final class ObjectBigArray<T>
     }
 
     /**
-     * Replaces the element of this big array at specified index.
-     *
-     * @param index a position in this big array.
-     * @return true if the previous value was not null
-     */
-    public boolean replace(long index, T value)
-    {
-        return getAndSet(index, value) != null;
-    }
-
-    /**
      * Ensures this big array is at least the specified length.  If the array is smaller, segments
      * are added until the array is larger then the specified length.
      */
