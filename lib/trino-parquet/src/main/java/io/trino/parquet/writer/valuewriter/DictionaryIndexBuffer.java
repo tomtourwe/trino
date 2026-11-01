@@ -42,7 +42,6 @@ final class DictionaryIndexBuffer
     private int[] currentSlab;
     private int currentSlabOffset;
     private int currentSlabSize = INITIAL_SLAB_SIZE;
-    private int size;
 
     private int previousValue;
     private int bufferedValues;
@@ -67,13 +66,7 @@ final class DictionaryIndexBuffer
         }
         currentSlab[currentSlabOffset] = value;
         currentSlabOffset++;
-        size++;
         updateEstimatedSize(value);
-    }
-
-    public int size()
-    {
-        return size;
     }
 
     public long estimatedSerializedSize(int bitWidth)

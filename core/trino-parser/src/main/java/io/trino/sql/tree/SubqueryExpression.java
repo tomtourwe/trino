@@ -17,19 +17,11 @@ import com.google.common.collect.ImmutableList;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 public class SubqueryExpression
         extends Expression
 {
     private final Query query;
-
-    @Deprecated
-    public SubqueryExpression(Query query)
-    {
-        super(Optional.empty());
-        this.query = query;
-    }
 
     public SubqueryExpression(NodeLocation location, Query query)
     {

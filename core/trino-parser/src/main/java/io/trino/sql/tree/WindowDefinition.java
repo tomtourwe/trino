@@ -28,11 +28,6 @@ public class WindowDefinition
     private final Identifier name;
     private final WindowSpecification window;
 
-    public WindowDefinition(Identifier name, WindowSpecification window)
-    {
-        this(Optional.empty(), name, window);
-    }
-
     public WindowDefinition(NodeLocation location, Identifier name, WindowSpecification window)
     {
         this(Optional.of(location), name, window);

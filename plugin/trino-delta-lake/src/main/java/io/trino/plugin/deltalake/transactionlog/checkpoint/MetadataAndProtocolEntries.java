@@ -19,7 +19,6 @@ import io.trino.plugin.deltalake.transactionlog.ProtocolEntry;
 import java.util.Optional;
 
 import static io.airlift.slice.SizeOf.instanceSize;
-import static io.airlift.slice.SizeOf.sizeOf;
 
 public record MetadataAndProtocolEntries(Optional<MetadataEntry> metadata, Optional<ProtocolEntry> protocol)
 {
@@ -28,12 +27,5 @@ public record MetadataAndProtocolEntries(Optional<MetadataEntry> metadata, Optio
     public MetadataAndProtocolEntries(MetadataEntry metadata, ProtocolEntry protocol)
     {
         this(Optional.ofNullable(metadata), Optional.ofNullable(protocol));
-    }
-
-    public long getRetainedSizeInBytes()
-    {
-        return INSTANCE_SIZE
-                + sizeOf(metadata, MetadataEntry::getRetainedSizeInBytes)
-                + sizeOf(protocol, ProtocolEntry::getRetainedSizeInBytes);
     }
 }

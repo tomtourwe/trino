@@ -18,12 +18,9 @@ import io.trino.array.LongBigArray;
 import it.unimi.dsi.fastutil.Hash;
 import it.unimi.dsi.fastutil.HashCommon;
 
-import java.util.function.BiFunction;
-
 import static io.airlift.slice.SizeOf.instanceSize;
 import static it.unimi.dsi.fastutil.HashCommon.bigArraySize;
 import static it.unimi.dsi.fastutil.HashCommon.maxFill;
-import static java.util.Objects.requireNonNull;
 
 // Note: this code was forked from fastutil (http://fastutil.di.unimi.it/) Long2LongOpenCustomHashMap
 // and mimics that code style.
@@ -165,34 +162,6 @@ public class LongLong2LongOpenCustomBigHashMap
     }
 
     /**
-     * Creates a new hash map and zero based null keys.
-     *
-     * <p>
-     * The actual table size will be the least power of two greater than
-     * {@code expected}/{@code f}.
-     *
-     * @param expected the expected number of elements in the hash map.
-     * @param f the load factor.
-     * @param strategy the strategy.
-     */
-    public LongLong2LongOpenCustomBigHashMap(final long expected, final float f, final HashStrategy strategy)
-    {
-        this(expected, f, strategy, 0, 0);
-    }
-
-    /**
-     * Creates a new hash map with {@link Hash#DEFAULT_LOAD_FACTOR} as load factor
-     * and zero based null keys.
-     *
-     * @param expected the expected number of elements in the hash map.
-     * @param strategy the strategy.
-     */
-    public LongLong2LongOpenCustomBigHashMap(final long expected, final HashStrategy strategy)
-    {
-        this(expected, DEFAULT_LOAD_FACTOR, strategy);
-    }
-
-    /**
      * Creates a new hash map with initial expected
      * {@link BigArrays#SEGMENT_SIZE} entries and
      * {@link Hash#DEFAULT_LOAD_FACTOR} as load factor.
@@ -206,40 +175,9 @@ public class LongLong2LongOpenCustomBigHashMap
         this(BigArrays.SEGMENT_SIZE, strategy, nullKey1, nullKey2);
     }
 
-    /**
-     * Creates a new hash map with initial expected
-     * {@link BigArrays#SEGMENT_SIZE} entries,
-     * {@link Hash#DEFAULT_LOAD_FACTOR} as load factor,
-     * and zero based null keys.
-     *
-     * @param strategy the strategy.
-     */
-    public LongLong2LongOpenCustomBigHashMap(final HashStrategy strategy)
-    {
-        this(BigArrays.SEGMENT_SIZE, DEFAULT_LOAD_FACTOR, strategy);
-    }
-
     public void defaultReturnValue(final long rv)
     {
         defRetValue = rv;
-    }
-
-    /**
-     * Returns the size of this hash map in bytes.
-     */
-    public long sizeOf()
-    {
-        return INSTANCE_SIZE + key1.sizeOf() + key2.sizeOf() + value.sizeOf();
-    }
-
-    /**
-     * Returns the hashing strategy.
-     *
-     * @return the hashing strategy of this custom hash map.
-     */
-    public HashStrategy strategy()
-    {
-        return strategy;
     }
 
     private long realSize()
@@ -479,42 +417,6 @@ public class LongLong2LongOpenCustomBigHashMap
         return false;
     }
 
-    public boolean remove(final long k1, final long k2, final long v)
-    {
-        if (strategy.equals(k1, k2, nullKey1, nullKey2)) {
-            if (containsNullKey && (v == value.get(n))) {
-                removeNullEntry();
-                return true;
-            }
-            return false;
-        }
-        final LongBigArray key1 = this.key1;
-        final LongBigArray key2 = this.key2;
-        // The starting point.
-        long pos = HashCommon.mix(strategy.hashCode(k1, k2)) & mask;
-        long curr1 = key1.get(pos);
-        long curr2 = key2.get(pos);
-        if ((curr1 == nullKey1) && (curr2 == nullKey2)) {
-            return false;
-        }
-        if (strategy.equals(k1, k2, curr1, curr2) && (v == value.get(pos))) {
-            removeEntry(pos);
-            return true;
-        }
-        while (true) {
-            pos = (pos + 1) & mask;
-            curr1 = key1.get(pos);
-            curr2 = key2.get(pos);
-            if ((curr1 == nullKey1) && (curr2 == nullKey2)) {
-                return false;
-            }
-            if (strategy.equals(k1, k2, curr1, curr2) && (v == value.get(pos))) {
-                removeEntry(pos);
-                return true;
-            }
-        }
-    }
-
     public boolean replace(final long k1, final long k2, final long oldValue, final long v)
     {
         final long pos = find(k1, k2);
@@ -523,43 +425,6 @@ public class LongLong2LongOpenCustomBigHashMap
         }
         value.set(pos, v);
         return true;
-    }
-
-    public long replace(final long k1, final long k2, final long v)
-    {
-        final long pos = find(k1, k2);
-        if (pos < 0) {
-            return defRetValue;
-        }
-        final long oldValue = value.get(pos);
-        value.set(pos, v);
-        return oldValue;
-    }
-
-    public long merge(
-            final long k1,
-            final long k2,
-            final long v,
-            final BiFunction<? super Long, ? super Long, ? extends Long> remappingFunction)
-    {
-        requireNonNull(remappingFunction);
-        final long pos = find(k1, k2);
-        if (pos < 0) {
-            insert(-pos - 1, k1, k2, v);
-            return v;
-        }
-        final Long newValue = remappingFunction.apply(Long.valueOf(value.get(pos)), Long.valueOf(v));
-        if (newValue == null) {
-            if (strategy.equals(k1, k2, nullKey1, nullKey2)) {
-                removeNullEntry();
-            }
-            else {
-                removeEntry(pos);
-            }
-            return defRetValue;
-        }
-        value.set(pos, newValue.longValue());
-        return newValue.longValue();
     }
 
     /**

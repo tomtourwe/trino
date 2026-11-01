@@ -795,35 +795,9 @@ public final class JsonItemBuilder
             return this;
         }
 
-        public ArrayWriter booleanValue(boolean value)
-        {
-            writer.booleanValue(value);
-            return this;
-        }
-
         public ArrayWriter bigint(long value)
         {
             writer.bigint(value);
-            return this;
-        }
-
-        public ArrayWriter doubleValue(double value)
-        {
-            writer.doubleValue(value);
-            return this;
-        }
-
-        public ArrayWriter varchar(Slice value)
-        {
-            writer.varchar(value);
-            return this;
-        }
-
-        public ArrayWriter array(Consumer<ArrayWriter> body)
-        {
-            writer.startArray();
-            body.accept(new ArrayWriter(writer));
-            writer.endArray();
             return this;
         }
 
@@ -867,34 +841,6 @@ public final class JsonItemBuilder
         public ObjectWriter bigint(String key, long value)
         {
             writer.fieldName(key).bigint(value);
-            return this;
-        }
-
-        public ObjectWriter doubleValue(String key, double value)
-        {
-            writer.fieldName(key).doubleValue(value);
-            return this;
-        }
-
-        public ObjectWriter varchar(String key, Slice value)
-        {
-            writer.fieldName(key).varchar(value);
-            return this;
-        }
-
-        public ObjectWriter array(String key, Consumer<ArrayWriter> body)
-        {
-            writer.fieldName(key).startArray();
-            body.accept(new ArrayWriter(writer));
-            writer.endArray();
-            return this;
-        }
-
-        public ObjectWriter object(String key, Consumer<ObjectWriter> body)
-        {
-            writer.fieldName(key).startObject();
-            body.accept(new ObjectWriter(writer));
-            writer.endObject();
             return this;
         }
 

@@ -72,11 +72,6 @@ public class BenchmarkBinaryColumnWriter
         private final Function<Range, Type> type;
         private final BiFunction<Integer, Range, byte[][]> dataGenerator;
 
-        public Type getType(Range length)
-        {
-            return type.apply(length);
-        }
-
         public byte[][] generateData(int size, Range positionLength)
         {
             return dataGenerator.apply(size, positionLength);

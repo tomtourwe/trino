@@ -40,16 +40,6 @@ public class TestingNodeManager
         nodes.addAll(otherNodes);
     }
 
-    public void addNode(Node node)
-    {
-        nodes.add(node);
-    }
-
-    public void removeNode(Node node)
-    {
-        nodes.remove(node);
-    }
-
     @Override
     public Set<Node> getAllNodes()
     {
@@ -92,12 +82,6 @@ public class TestingNodeManager
         public Builder localNode(Node localNode)
         {
             this.localNode = requireNonNull(localNode, "localNode is null");
-            return this;
-        }
-
-        public Builder addNode(Node node)
-        {
-            otherNodes.add(requireNonNull(node, "node is null"));
             return this;
         }
 

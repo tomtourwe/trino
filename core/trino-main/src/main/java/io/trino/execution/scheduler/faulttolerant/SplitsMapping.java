@@ -179,14 +179,6 @@ public final class SplitsMapping
         return new UpdatingBuilder(mapping);
     }
 
-    public long size()
-    {
-        return splits.values().stream()
-                .flatMap(sourcePartitionToSplits -> sourcePartitionToSplits.values().stream())
-                .mapToLong(List::size)
-                .sum();
-    }
-
     public abstract static class Builder
     {
         private Builder() {} // close for extension

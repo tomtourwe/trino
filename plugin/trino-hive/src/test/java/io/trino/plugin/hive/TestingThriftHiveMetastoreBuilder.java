@@ -93,12 +93,6 @@ public final class TestingThriftHiveMetastoreBuilder
         return this;
     }
 
-    public TestingThriftHiveMetastoreBuilder fileSystemFactory(TrinoFileSystemFactory fileSystemFactory)
-    {
-        this.fileSystemFactory = requireNonNull(fileSystemFactory, "fileSystemFactory is null");
-        return this;
-    }
-
     public ThriftMetastore build(Consumer<AutoCloseable> registerResource)
     {
         checkState(tokenAwareMetastoreClientFactory != null, "metastore client not set");

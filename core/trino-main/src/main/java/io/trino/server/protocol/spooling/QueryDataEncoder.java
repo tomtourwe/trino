@@ -40,14 +40,6 @@ public interface QueryDataEncoder
     String encoding();
 
     /**
-     * Returns additional attributes that are passed to the QueryDataDecoder.Factory.create method.
-     */
-    default DataAttributes attributes()
-    {
-        return DataAttributes.empty();
-    }
-
-    /**
      * Responsible for choosing a {@link Factory} based on the client-provider
      * supported encodings. Encoding that will be used is resolved one time
      * during session creation.

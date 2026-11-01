@@ -52,11 +52,6 @@ public class NimbusAirliftHttpClient
     private final HttpClient httpClient;
     private final String userAgent;
 
-    public NimbusAirliftHttpClient(HttpClient httpClient)
-    {
-        this(httpClient, new NodeVersion("unknown"));
-    }
-
     @Inject
     public NimbusAirliftHttpClient(@ForOAuth2 HttpClient httpClient, NodeVersion nodeVersion)
     {

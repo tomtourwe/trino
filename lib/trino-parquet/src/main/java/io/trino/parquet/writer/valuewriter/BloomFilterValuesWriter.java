@@ -110,12 +110,6 @@ public class BloomFilterValuesWriter
     }
 
     @Override
-    public void writeByte(int value)
-    {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public void writeBoolean(boolean v)
     {
         throw new UnsupportedOperationException();
@@ -161,11 +155,5 @@ public class BloomFilterValuesWriter
     {
         writer.writeFloat(v);
         bloomFilter.insertHash(bloomFilter.hash(v));
-    }
-
-    @Override
-    public String memUsageString(String s)
-    {
-        return writer.memUsageString(s);
     }
 }

@@ -559,11 +559,6 @@ public class TestOrcPageSourceMemoryTracking
             fileSplit = createTestFile(tempFilePath, serde, testColumns, numRows, stripeRows);
         }
 
-        public long getFileSize()
-        {
-            return fileSplit.getLength();
-        }
-
         public ConnectorPageSource newPageSource(MemoryContext memoryContext)
         {
             return newPageSource(new FileFormatDataSourceStats(), UNCACHED_SESSION, memoryContext);

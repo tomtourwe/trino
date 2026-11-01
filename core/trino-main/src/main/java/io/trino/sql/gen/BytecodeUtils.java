@@ -30,7 +30,6 @@ import io.trino.metadata.FunctionManager;
 import io.trino.metadata.ResolvedFunction;
 import io.trino.spi.block.BlockBuilder;
 import io.trino.spi.connector.ConnectorSession;
-import io.trino.spi.function.BoundSignature;
 import io.trino.spi.function.FunctionNullability;
 import io.trino.spi.function.InOut;
 import io.trino.spi.function.InvocationConvention;
@@ -510,11 +509,6 @@ public final class BytecodeUtils
                                 parameters.toArray(new BytecodeExpression[0]));
             }
         };
-    }
-
-    public static BytecodeExpression invoke(Binding binding, BoundSignature signature)
-    {
-        return invoke(binding, signature.getName().functionName());
     }
 
     /**

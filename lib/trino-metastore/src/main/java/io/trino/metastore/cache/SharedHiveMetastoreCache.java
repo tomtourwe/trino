@@ -124,11 +124,6 @@ public class SharedHiveMetastoreCache
         }
     }
 
-    public boolean isEnabled()
-    {
-        return enabled;
-    }
-
     public HiveMetastoreFactory createCachingHiveMetastoreFactory(HiveMetastoreFactory metastoreFactory)
     {
         if (!enabled || metastoreFactory.hasBuiltInCaching()) {

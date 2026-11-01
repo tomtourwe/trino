@@ -337,12 +337,6 @@ public class SqlStandardAccessControl
         }
     }
 
-    @Deprecated
-    public void checkCanSelectFromColumns(ConnectorSecurityContext context, SchemaTableName tableName, Set<String> columnNames)
-    {
-        checkCanSelectFromColumns(context, tableName, Optional.empty(), columnNames);
-    }
-
     @Override
     public void checkCanInsertIntoTable(ConnectorSecurityContext context, SchemaTableName tableName, Optional<String> branch)
     {
@@ -416,12 +410,6 @@ public class SqlStandardAccessControl
         if (!checkTablePermission(context, tableName, SELECT, true)) {
             denyCreateViewWithSelect(tableName.toString(), branch, context.getIdentity());
         }
-    }
-
-    @Deprecated
-    public void checkCanCreateViewWithSelectFromColumns(ConnectorSecurityContext context, SchemaTableName tableName, Set<String> columnNames)
-    {
-        checkCanCreateViewWithSelectFromColumns(context, tableName, Optional.empty(), columnNames);
     }
 
     @Override

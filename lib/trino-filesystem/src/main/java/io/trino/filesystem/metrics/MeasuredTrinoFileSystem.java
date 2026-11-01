@@ -22,7 +22,6 @@ import io.trino.filesystem.TrinoOutputFile;
 import io.trino.filesystem.UriLocation;
 import io.trino.filesystem.encryption.EncryptionKey;
 import io.trino.plugin.base.metrics.ApiCallStats;
-import io.trino.spi.metrics.Metrics;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -200,12 +199,6 @@ public class MeasuredTrinoFileSystem
             throws IOException
     {
         return measure("encryptedPreSignedUri", () -> delegate.encryptedPreSignedUri(location, ttl, key));
-    }
-
-    @Override
-    public Metrics getMetrics()
-    {
-        return delegate.getMetrics().mergeWith(apiCallStats.toMetrics("filesystem"));
     }
 
     private <T> T measure(String callName, Call<T> call)

@@ -29,11 +29,6 @@ public class WithQuery
     private final Query query;
     private final Optional<List<Identifier>> columnNames;
 
-    public WithQuery(Identifier name, Query query, Optional<List<Identifier>> columnNames)
-    {
-        this(Optional.empty(), name, query, columnNames);
-    }
-
     public WithQuery(NodeLocation location, Identifier name, Query query, Optional<List<Identifier>> columnNames)
     {
         this(Optional.of(location), name, query, columnNames);

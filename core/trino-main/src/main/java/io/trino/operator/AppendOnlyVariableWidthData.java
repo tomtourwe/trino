@@ -77,11 +77,6 @@ public final class AppendOnlyVariableWidthData
                 addExact(chunksRetainedSizeInBytes, sizeOf(chunks.elements())));
     }
 
-    public long getFreeBytes()
-    {
-        return freeBytes;
-    }
-
     public byte[] allocate(byte[] pointer, int pointerOffset, int size)
     {
         if (size == 0) {

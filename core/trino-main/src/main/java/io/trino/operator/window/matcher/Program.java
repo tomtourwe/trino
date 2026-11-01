@@ -18,7 +18,6 @@ import com.google.common.collect.ImmutableList;
 import java.util.List;
 
 import static java.lang.Math.toIntExact;
-import static java.lang.String.format;
 
 public class Program
 {
@@ -60,22 +59,5 @@ public class Program
     public int getMinLabelCount()
     {
         return minLabelCount;
-    }
-
-    public String dump()
-    {
-        StringBuilder builder = new StringBuilder();
-
-        builder.append("Min slots: ")
-                .append(minSlotCount)
-                .append("\n")
-                .append("Min labels: ")
-                .append(minLabelCount)
-                .append("\n");
-        for (int i = 0; i < instructions.size(); i++) {
-            builder.append(format("%s: %s\n", i, instructions.get(i)));
-        }
-
-        return builder.toString();
     }
 }

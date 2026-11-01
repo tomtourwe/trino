@@ -22,9 +22,4 @@ public class InvalidClaimException
     {
         super(message);
     }
-
-    public InvalidClaimException(String message, Throwable cause)
-    {
-        super(message, cause);
-    }
 }

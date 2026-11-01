@@ -55,18 +55,6 @@ public final class ComparisonPredicate
                 case GREATER_THAN_OR_EQUAL -> LESS_THAN_OR_EQUAL;
             };
         }
-
-        public Operator negate()
-        {
-            return switch (this) {
-                case EQUAL -> NOT_EQUAL;
-                case NOT_EQUAL -> EQUAL;
-                case LESS_THAN -> GREATER_THAN_OR_EQUAL;
-                case LESS_THAN_OR_EQUAL -> GREATER_THAN;
-                case GREATER_THAN -> LESS_THAN_OR_EQUAL;
-                case GREATER_THAN_OR_EQUAL -> LESS_THAN;
-            };
-        }
     }
 
     private final Operator operator;

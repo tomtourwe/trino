@@ -35,7 +35,6 @@ import io.airlift.stats.DecayCounter;
 import io.airlift.units.Duration;
 import io.trino.client.FailureInfo;
 import io.trino.server.InternalCommunicationConfig;
-import io.trino.spi.HostAddress;
 import io.trino.util.Failures;
 import jakarta.annotation.Nullable;
 import jakarta.annotation.PostConstruct;
@@ -44,8 +43,6 @@ import org.joda.time.DateTime;
 import org.weakref.jmx.Managed;
 import org.weakref.jmx.Nested;
 
-import java.net.ConnectException;
-import java.net.SocketTimeoutException;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
@@ -67,11 +64,6 @@ import static com.google.common.collect.ImmutableSet.toImmutableSet;
 import static io.airlift.concurrent.Threads.daemonThreadsNamed;
 import static io.airlift.http.client.HttpUriBuilder.uriBuilderFrom;
 import static io.airlift.http.client.Request.Builder.prepareHead;
-import static io.trino.failuredetector.FailureDetector.State.ALIVE;
-import static io.trino.failuredetector.FailureDetector.State.GONE;
-import static io.trino.failuredetector.FailureDetector.State.UNKNOWN;
-import static io.trino.failuredetector.FailureDetector.State.UNRESPONSIVE;
-import static io.trino.spi.HostAddress.fromUri;
 import static java.util.Objects.requireNonNull;
 
 public class HeartbeatFailureDetector
@@ -161,31 +153,6 @@ public class HeartbeatFailureDetector
                 .filter(MonitoringTask::isFailed)
                 .map(MonitoringTask::getService)
                 .collect(toImmutableSet());
-    }
-
-    @Override
-    public State getState(HostAddress hostAddress)
-    {
-        for (MonitoringTask task : tasks.values()) {
-            if (hostAddress.equals(fromUri(task.uri))) {
-                if (!task.isFailed()) {
-                    return ALIVE;
-                }
-
-                Exception lastFailureException = task.getStats().getLastFailureException();
-                if (lastFailureException instanceof ConnectException) {
-                    return GONE;
-                }
-                if (lastFailureException instanceof SocketTimeoutException) {
-                    // TODO: distinguish between process unresponsiveness (e.g. GC pause) and host reboot
-                    return UNRESPONSIVE;
-                }
-
-                return UNKNOWN;
-            }
-        }
-
-        return UNKNOWN;
     }
 
     @Managed(description = "Number of failed services")

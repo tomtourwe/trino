@@ -187,12 +187,6 @@ public class TestLookupJoinPageBuilder
         }
 
         @Override
-        public boolean isEmpty()
-        {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
         public long getJoinPositionCount()
         {
             throw new UnsupportedOperationException();

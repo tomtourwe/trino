@@ -398,12 +398,6 @@ public class IcebergColumnHandle
             this.baseColumnIdentity = requireNonNull(columnIdentity, "columnIdentity is null");
         }
 
-        public Builder baseColumnIdentity(ColumnIdentity baseColumnIdentity)
-        {
-            this.baseColumnIdentity = baseColumnIdentity;
-            return this;
-        }
-
         public Builder path(List<Integer> path)
         {
             this.path = path;

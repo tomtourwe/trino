@@ -616,12 +616,6 @@ public abstract class AbstractMockMetadata
     }
 
     @Override
-    public List<QualifiedObjectName> listViews(Session session, QualifiedTablePrefix prefix)
-    {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public Map<QualifiedObjectName, ViewInfo> getViews(Session session, QualifiedTablePrefix prefix)
     {
         throw new UnsupportedOperationException();

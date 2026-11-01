@@ -140,12 +140,6 @@ public abstract class ColumnChunkMetadata
         return properties.path();
     }
 
-    public PrimitiveTypeName getType()
-    {
-        decryptIfNeeded();
-        return properties.type().getPrimitiveTypeName();
-    }
-
     public PrimitiveType getPrimitiveType()
     {
         decryptIfNeeded();

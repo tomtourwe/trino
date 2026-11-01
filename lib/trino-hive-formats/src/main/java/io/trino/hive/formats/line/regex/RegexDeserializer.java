@@ -186,17 +186,9 @@ public class RegexDeserializer
     public static class UnsupportedTypeException
             extends RuntimeException
     {
-        private final Column column;
-
         public UnsupportedTypeException(Column column)
         {
             super("Unsupported column type: " + column);
-            this.column = column;
-        }
-
-        public Column getColumn()
-        {
-            return column;
         }
     }
 }

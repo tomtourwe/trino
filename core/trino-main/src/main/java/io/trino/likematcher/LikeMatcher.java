@@ -45,11 +45,6 @@ public class LikeMatcher
         this.matcher = matcher;
     }
 
-    public static LikeMatcher compile(String pattern)
-    {
-        return compile(pattern, Optional.empty(), true);
-    }
-
     public static LikeMatcher compile(String pattern, Optional<Character> escape)
     {
         return compile(pattern, escape, true);

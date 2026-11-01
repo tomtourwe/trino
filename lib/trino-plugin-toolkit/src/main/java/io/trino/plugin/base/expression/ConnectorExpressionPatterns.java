@@ -95,24 +95,6 @@ public final class ConnectorExpressionPatterns
         });
     }
 
-    public static Property<Call, ?, Type> argumentType(int argument)
-    {
-        checkArgument(0 <= argument, "Invalid argument index: %s", argument);
-        return Property.optionalProperty(format("argumentType(%s)", argument), call -> {
-            if (argument < call.getArguments().size()) {
-                return Optional.of(call.getArguments().get(argument).getType());
-            }
-            return Optional.empty();
-        });
-    }
-
-    public static Property<Call, ?, List<Type>> argumentTypes()
-    {
-        return Property.property("argumentTypes", call -> call.getArguments().stream()
-                .map(ConnectorExpression::getType)
-                .collect(toImmutableList()));
-    }
-
     public static Pattern<Constant> constant()
     {
         return Pattern.typeOf(Constant.class);

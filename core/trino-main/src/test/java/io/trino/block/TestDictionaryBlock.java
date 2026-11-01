@@ -16,14 +16,12 @@ package io.trino.block;
 import com.google.common.collect.ImmutableList;
 import io.airlift.slice.Slice;
 import io.trino.spi.block.Block;
-import io.trino.spi.block.BlockBuilder;
 import io.trino.spi.block.DictionaryBlock;
 import io.trino.spi.block.DictionaryId;
 import io.trino.spi.block.IntArrayBlock;
 import io.trino.spi.block.RunLengthEncodedBlock;
 import io.trino.spi.block.ValueBlock;
 import io.trino.spi.block.VariableWidthBlock;
-import io.trino.spi.block.VariableWidthBlockBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
@@ -426,11 +424,6 @@ public class TestDictionaryBlock
             ids[i] = i % dictionarySize;
         }
         return (DictionaryBlock) DictionaryBlock.create(ids.length, createSlicesBlock(expectedValues), ids);
-    }
-
-    private static BlockBuilder createBlockBuilder()
-    {
-        return new VariableWidthBlockBuilder(null, 100, 1);
     }
 
     private static void assertDictionaryIds(DictionaryBlock dictionaryBlock, int... expected)

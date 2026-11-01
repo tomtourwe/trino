@@ -248,11 +248,6 @@ public class RcFileReader
         }
     }
 
-    public byte getVersion()
-    {
-        return version;
-    }
-
     public Map<String, String> getMetadata()
     {
         return metadata;
@@ -261,11 +256,6 @@ public class RcFileReader
     public int getColumnCount()
     {
         return columnCount;
-    }
-
-    public long getLength()
-    {
-        return length;
     }
 
     public long getBytesRead()

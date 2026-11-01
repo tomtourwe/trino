@@ -37,11 +37,6 @@ public record BufferResult(
         serializedPages = ImmutableList.copyOf(requireNonNull(serializedPages, "serializedPages is null"));
     }
 
-    public int size()
-    {
-        return serializedPages.size();
-    }
-
     public boolean isEmpty()
     {
         return serializedPages.isEmpty();

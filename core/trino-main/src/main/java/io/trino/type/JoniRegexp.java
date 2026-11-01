@@ -13,7 +13,6 @@
  */
 package io.trino.type;
 
-import io.airlift.joni.Matcher;
 import io.airlift.joni.Regex;
 import io.airlift.slice.Slice;
 
@@ -38,11 +37,6 @@ public final class JoniRegexp
     public Regex regex()
     {
         return regex;
-    }
-
-    public Matcher matcher(byte[] bytes)
-    {
-        return regex.matcher(bytes);
     }
 
     @Override

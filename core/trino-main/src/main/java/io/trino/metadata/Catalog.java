@@ -112,11 +112,6 @@ public class Catalog
         return new CatalogInfo(catalogName.toString(), catalogHandle, connectorName, catalogStatus);
     }
 
-    public boolean isFailed()
-    {
-        return catalogConnector == null;
-    }
-
     public void verify()
     {
         if (catalogConnector == null) {

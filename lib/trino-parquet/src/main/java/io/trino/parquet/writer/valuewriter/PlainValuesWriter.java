@@ -22,8 +22,6 @@ import org.apache.parquet.column.Encoding;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
-import static java.lang.String.format;
-
 /**
  * PLAIN encoder which writes into a Slice, avoiding a per-value Binary on the write path.
  */
@@ -68,12 +66,6 @@ public final class PlainValuesWriter
     }
 
     @Override
-    public void writeByte(int value)
-    {
-        sliceOutput.writeByte(value);
-    }
-
-    @Override
     public void writeBoolean(boolean value)
     {
         sliceOutput.writeBoolean(value);
@@ -115,12 +107,6 @@ public final class PlainValuesWriter
     public void writeFloat(float value)
     {
         sliceOutput.writeFloat(value);
-    }
-
-    @Override
-    public String memUsageString(String prefix)
-    {
-        return format("%s PlainValuesWriter %d bytes", prefix, sliceOutput.getRetainedSize());
     }
 
     @Override

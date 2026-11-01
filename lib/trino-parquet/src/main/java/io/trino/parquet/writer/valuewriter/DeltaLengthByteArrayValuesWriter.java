@@ -25,8 +25,6 @@ import org.apache.parquet.column.values.delta.DeltaBinaryPackingValuesWriterForI
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
-import static java.lang.String.format;
-
 /**
  * Writes lengths of byte arrays with delta encoding, followed by the concatenated byte arrays.
  * The byte arrays are written into a Slice, avoiding a per-value Binary on the write path.
@@ -91,12 +89,6 @@ public final class DeltaLengthByteArrayValuesWriter
     {
         lengthWriter.writeInteger(length);
         sliceOutput.writeBytes(base, offset, length);
-    }
-
-    @Override
-    public String memUsageString(String prefix)
-    {
-        return lengthWriter.memUsageString(format("%s DeltaLengthByteArrayValuesWriter %d bytes", prefix, sliceOutput.getRetainedSize()));
     }
 
     @Override

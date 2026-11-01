@@ -50,11 +50,6 @@ public final class ColumnMapping
         return new ColumnMapping(trinoType, readFunction, writeFunction, predicatePushdownController);
     }
 
-    public static ColumnMapping doubleMapping(Type trinoType, DoubleReadFunction readFunction, DoubleWriteFunction writeFunction)
-    {
-        return doubleMapping(trinoType, readFunction, writeFunction, FULL_PUSHDOWN);
-    }
-
     public static ColumnMapping doubleMapping(
             Type trinoType,
             DoubleReadFunction readFunction,

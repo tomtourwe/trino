@@ -15,7 +15,6 @@ package io.trino.filesystem;
 
 import io.airlift.units.Duration;
 import io.trino.filesystem.encryption.EncryptionKey;
-import io.trino.spi.metrics.Metrics;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -404,13 +403,5 @@ public interface TrinoFileSystem
     {
         return getCausalChain(throwable).stream()
                 .anyMatch(t -> t instanceof TrinoFileSystemException || t instanceof FileNotFoundException || t instanceof UnsupportedOperationException);
-    }
-
-    /**
-     * Returns metrics collected by this file system instance.
-     */
-    default Metrics getMetrics()
-    {
-        return Metrics.EMPTY;
     }
 }

@@ -60,11 +60,6 @@ public class ChannelSet
         return set.contains(valueBlock, position);
     }
 
-    public boolean contains(Block valueBlock, int position, long rawHash)
-    {
-        return set.contains(valueBlock, position, rawHash);
-    }
-
     public static class ChannelSetBuilder
     {
         private final LocalMemoryContext memoryContext;

@@ -29,9 +29,4 @@ public class UnknownTableTypeException
         super(UNSUPPORTED_TABLE_TYPE, "Not an Iceberg table: " + tableName);
         this.tableName = requireNonNull(tableName, "tableName is null");
     }
-
-    public SchemaTableName getTableName()
-    {
-        return tableName;
-    }
 }

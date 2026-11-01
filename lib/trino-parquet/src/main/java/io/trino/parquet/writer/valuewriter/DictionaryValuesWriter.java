@@ -40,7 +40,6 @@ import static it.unimi.dsi.fastutil.Hash.DEFAULT_LOAD_FACTOR;
 import static it.unimi.dsi.fastutil.HashCommon.arraySize;
 import static it.unimi.dsi.fastutil.HashCommon.mix;
 import static java.lang.Math.toIntExact;
-import static java.lang.String.format;
 import static org.apache.parquet.bytes.BytesInput.concat;
 
 /**
@@ -234,22 +233,6 @@ public abstract class DictionaryValuesWriter
      * @return size in items
      */
     protected abstract int getDictionarySize();
-
-    @Override
-    public String memUsageString(String prefix)
-    {
-        return format(
-                """
-                %s DictionaryValuesWriter{
-                %s
-                %s
-                %s}
-                """,
-                prefix,
-                prefix + " dict:" + dictionaryByteSize,
-                prefix + " values:" + encodedValues.size() * 4L,
-                prefix);
-    }
 
     private static final class RunLengthEncodingConsumer
             implements DictionaryIndexBuffer.SegmentConsumer

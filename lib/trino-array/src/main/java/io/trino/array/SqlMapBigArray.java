@@ -29,11 +29,6 @@ public final class SqlMapBigArray
         array = new ObjectBigArray<>();
     }
 
-    public SqlMapBigArray(SqlMap sqlMap)
-    {
-        array = new ObjectBigArray<>(sqlMap);
-    }
-
     /**
      * Returns the size of this big array in bytes.
      */

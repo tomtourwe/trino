@@ -26,12 +26,6 @@ public abstract class TraversingQueryContextVisitor<C, R>
     protected abstract R mergeResults(List<R> childrenResults);
 
     @Override
-    public R visitQueryContext(QueryContext queryContext, C visitContext)
-    {
-        return mergeResults(queryContext.acceptChildren(this, visitContext));
-    }
-
-    @Override
     public R visitTaskContext(TaskContext taskContext, C visitContext)
     {
         return mergeResults(taskContext.acceptChildren(this, visitContext));

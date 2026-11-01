@@ -853,7 +853,6 @@ public class TestingAccessControlManager
         COMMENT_COLUMN,
         INSERT_TABLE,
         DELETE_TABLE,
-        MERGE_TABLE,
         UPDATE_TABLE,
         TRUNCATE_TABLE,
         SET_TABLE_PROPERTIES,
@@ -903,11 +902,6 @@ public class TestingAccessControlManager
             this.actorName = requireNonNull(actorName, "actorName is null");
             this.entityPredicate = requireNonNull(entityPredicate, "entityPredicate is null");
             this.type = requireNonNull(type, "type is null");
-        }
-
-        public boolean matches(Optional<String> actorName, String entityName, TestingPrivilegeType type)
-        {
-            return matches(actorName, entityName, Optional.empty(), type);
         }
 
         public boolean matches(Optional<String> actorName, String entityName, Optional<String> branch, TestingPrivilegeType type)

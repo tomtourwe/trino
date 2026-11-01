@@ -84,16 +84,6 @@ public class ResourceGroupSpecBuilder
         return nameTemplate;
     }
 
-    public Optional<Duration> getSoftCpuLimit()
-    {
-        return softCpuLimit;
-    }
-
-    public Optional<Duration> getHardCpuLimit()
-    {
-        return hardCpuLimit;
-    }
-
     public Optional<Long> getParentId()
     {
         return parentId;

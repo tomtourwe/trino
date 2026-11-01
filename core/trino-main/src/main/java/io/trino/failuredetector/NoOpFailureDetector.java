@@ -15,7 +15,6 @@ package io.trino.failuredetector;
 
 import com.google.common.collect.ImmutableSet;
 import io.airlift.discovery.client.ServiceDescriptor;
-import io.trino.spi.HostAddress;
 
 import java.util.Set;
 
@@ -26,11 +25,5 @@ public class NoOpFailureDetector
     public Set<ServiceDescriptor> getFailed()
     {
         return ImmutableSet.of();
-    }
-
-    @Override
-    public State getState(HostAddress hostAddress)
-    {
-        return State.UNKNOWN;
     }
 }

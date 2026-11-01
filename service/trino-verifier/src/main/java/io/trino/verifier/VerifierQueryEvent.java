@@ -229,14 +229,4 @@ public class VerifierQueryEvent
     {
         return testTeardownQueries;
     }
-
-    public List<String> getControlSetupQueries()
-    {
-        return controlSetupQueries;
-    }
-
-    public List<String> getControlTeardownQueries()
-    {
-        return controlTeardownQueries;
-    }
 }

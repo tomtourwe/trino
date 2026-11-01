@@ -589,11 +589,6 @@ public class TestingTrinoServer
         return transactionManager;
     }
 
-    public TablePropertyManager getTablePropertyManager()
-    {
-        return tablePropertyManager;
-    }
-
     public PlannerContext getPlannerContext()
     {
         return plannerContext;

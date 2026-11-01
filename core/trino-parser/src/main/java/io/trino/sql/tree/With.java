@@ -29,11 +29,6 @@ public class With
     private final boolean recursive;
     private final List<WithQuery> queries;
 
-    public With(boolean recursive, List<WithQuery> queries)
-    {
-        this(Optional.empty(), recursive, queries);
-    }
-
     public With(NodeLocation location, boolean recursive, List<WithQuery> queries)
     {
         this(Optional.of(location), recursive, queries);

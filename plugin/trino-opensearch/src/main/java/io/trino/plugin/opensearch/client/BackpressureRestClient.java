@@ -115,12 +115,6 @@ public class BackpressureRestClient
         return request;
     }
 
-    public void close()
-            throws IOException
-    {
-        delegate.close();
-    }
-
     private static boolean isBackpressure(Throwable throwable)
     {
         return throwable instanceof ResponseException responseException &&

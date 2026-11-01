@@ -76,10 +76,5 @@ public class TestPowerOfTwoValidator
 
     public static class NullPowerOfTwoAnnotation
     {
-        @PowerOfTwo
-        public Integer getNull()
-        {
-            return null;
-        }
     }
 }

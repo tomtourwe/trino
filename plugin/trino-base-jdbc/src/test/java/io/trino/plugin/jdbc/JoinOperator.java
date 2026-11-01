@@ -28,11 +28,6 @@ public enum JoinOperator
         this.value = value;
     }
 
-    public String getValue()
-    {
-        return value;
-    }
-
     @Override
     public String toString()
     {

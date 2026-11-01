@@ -13,7 +13,6 @@
  */
 package io.trino.common.assertions;
 
-import io.trino.spi.eventlistener.BaseViewReferenceInfo;
 import io.trino.spi.eventlistener.FilterMaskReferenceInfo;
 import io.trino.spi.eventlistener.TableInfo;
 import io.trino.spi.eventlistener.TableReferenceInfo;
@@ -30,11 +29,6 @@ public class TrinoAssertions
     public static TableReferenceInfoAssert assertThat(TableReferenceInfo actual)
     {
         return new TableReferenceInfoAssert(actual);
-    }
-
-    public static BaseViewReferenceInfoAssert assertThat(BaseViewReferenceInfo actual)
-    {
-        return new BaseViewReferenceInfoAssert(actual);
     }
 
     public static FilterMaskReferenceInfoAssert assertThat(FilterMaskReferenceInfo actual)

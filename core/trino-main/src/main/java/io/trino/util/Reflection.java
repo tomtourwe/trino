@@ -38,16 +38,6 @@ public final class Reflection
         }
     }
 
-    public static Method method(Class<?> clazz, String name, Class<?>... parameterTypes)
-    {
-        try {
-            return clazz.getMethod(name, parameterTypes);
-        }
-        catch (NoSuchMethodException e) {
-            throw new TrinoException(GENERIC_INTERNAL_ERROR, e);
-        }
-    }
-
     /**
      * Returns a MethodHandle corresponding to the specified method.
      * <p>

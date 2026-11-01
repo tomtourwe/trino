@@ -236,13 +236,6 @@ public class InjectedConnectorAccessControl
         accessControl.checkCanSelectFromColumns(securityContext, getQualifiedObjectName(tableName), branch, columnNames);
     }
 
-    @Deprecated
-    public void checkCanSelectFromColumns(ConnectorSecurityContext context, SchemaTableName tableName, Set<String> columnNames)
-    {
-        checkArgument(context == null, "context must be null");
-        accessControl.checkCanSelectFromColumns(securityContext, getQualifiedObjectName(tableName), Optional.empty(), columnNames);
-    }
-
     @Override
     public void checkCanInsertIntoTable(ConnectorSecurityContext context, SchemaTableName tableName, Optional<String> branch)
     {
@@ -304,13 +297,6 @@ public class InjectedConnectorAccessControl
     {
         checkArgument(context == null, "context must be null");
         accessControl.checkCanCreateViewWithSelectFromColumns(securityContext, getQualifiedObjectName(tableName), branch, columnNames);
-    }
-
-    @Deprecated
-    public void checkCanCreateViewWithSelectFromColumns(ConnectorSecurityContext context, SchemaTableName tableName, Set<String> columnNames)
-    {
-        checkArgument(context == null, "context must be null");
-        accessControl.checkCanCreateViewWithSelectFromColumns(securityContext, getQualifiedObjectName(tableName), Optional.empty(), columnNames);
     }
 
     @Override

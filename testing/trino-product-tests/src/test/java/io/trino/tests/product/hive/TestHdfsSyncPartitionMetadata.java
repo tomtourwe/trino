@@ -25,7 +25,6 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
-import java.net.URI;
 import java.nio.file.Path;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -383,11 +382,5 @@ class TestHdfsSyncPartitionMetadata
             tableLocation = acidLocationMatcher.group(1);
         }
         return tableLocation;
-    }
-
-    private String getTablePath(HiveBasicEnvironment env, String tableName, int partitionColumns)
-    {
-        String location = getTableLocation(env, tableName, partitionColumns);
-        return URI.create(location).getPath();
     }
 }

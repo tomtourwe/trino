@@ -69,12 +69,6 @@ public class OrderedAccumulatorFactory
     }
 
     @Override
-    public List<Class<?>> getLambdaInterfaces()
-    {
-        return delegate.getLambdaInterfaces();
-    }
-
-    @Override
     public Accumulator createAccumulator(List<Supplier<Object>> lambdaProviders)
     {
         Accumulator accumulator = delegate.createAccumulator(lambdaProviders);

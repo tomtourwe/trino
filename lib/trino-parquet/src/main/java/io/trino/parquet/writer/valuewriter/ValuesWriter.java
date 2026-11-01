@@ -85,11 +85,6 @@ public abstract class ValuesWriter
      */
     public abstract long getAllocatedSize();
 
-    public void writeByte(int value)
-    {
-        throw new UnsupportedOperationException(getClass().getName());
-    }
-
     public void writeBoolean(boolean value)
     {
         throw new UnsupportedOperationException(getClass().getName());
@@ -124,6 +119,4 @@ public abstract class ValuesWriter
     {
         throw new UnsupportedOperationException(getClass().getName());
     }
-
-    public abstract String memUsageString(String prefix);
 }

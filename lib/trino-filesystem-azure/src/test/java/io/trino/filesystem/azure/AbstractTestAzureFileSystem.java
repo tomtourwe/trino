@@ -74,12 +74,6 @@ public abstract class AbstractTestAzureFileSystem
     private AzureFileSystemFactory fileSystemFactory;
     private TrinoFileSystem fileSystem;
 
-    protected void initializeWithAccessKey(String account, String accountKey, AccountKind accountKind)
-            throws IOException
-    {
-        initialize(account, new AzureAuthAccessKey(accountKey), accountKind, false);
-    }
-
     protected void initializeWithAccessKeyAndMultipartWrites(String account, String accountKey, AccountKind accountKind)
             throws IOException
     {

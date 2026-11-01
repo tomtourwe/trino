@@ -21,8 +21,6 @@ public interface IdentifierMapping
 
     String fromRemoteTableName(String remoteSchemaName, String remoteTableName);
 
-    String fromRemoteColumnName(String remoteColumnName);
-
     String toRemoteSchemaName(RemoteIdentifiers remoteIdentifiers, ConnectorIdentity identity, String schemaName);
 
     String toRemoteTableName(RemoteIdentifiers remoteIdentifiers, ConnectorIdentity identity, String remoteSchema, String tableName);

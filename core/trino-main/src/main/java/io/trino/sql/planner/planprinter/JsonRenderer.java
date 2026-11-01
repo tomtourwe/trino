@@ -28,12 +28,10 @@ import static com.google.common.collect.ImmutableList.toImmutableList;
 import static io.airlift.json.JsonCodec.jsonCodec;
 import static java.util.Objects.requireNonNull;
 
-public class JsonRenderer
-        implements Renderer<String>
+public class JsonRenderer 
 {
     private static final JsonCodec<JsonRenderedNode> CODEC = jsonCodec(JsonRenderedNode.class);
 
-    @Override
     public String render(PlanRepresentation plan)
     {
         return CODEC.toJson(renderJson(plan, plan.getRoot(), false));

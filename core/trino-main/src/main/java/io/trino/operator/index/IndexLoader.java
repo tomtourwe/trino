@@ -133,11 +133,6 @@ public class IndexLoader
         taskContextReference.compareAndSet(null, taskContext);
     }
 
-    public List<Type> getOutputTypes()
-    {
-        return outputTypes;
-    }
-
     public IndexSnapshot getIndexSnapshot()
     {
         return indexSnapshotReference.get();
@@ -365,12 +360,6 @@ public class IndexLoader
     private static class EmptyLookupSource
             implements LookupSource
     {
-        @Override
-        public boolean isEmpty()
-        {
-            return true;
-        }
-
         @Override
         public long getJoinPositionCount()
         {

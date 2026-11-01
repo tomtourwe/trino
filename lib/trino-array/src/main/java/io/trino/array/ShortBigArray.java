@@ -13,7 +13,6 @@
  */
 package io.trino.array;
 
-import com.google.common.primitives.Shorts;
 import io.airlift.slice.SizeOf;
 
 import java.util.Arrays;
@@ -57,14 +56,6 @@ public final class ShortBigArray
     }
 
     /**
-     * Returns the size of this big array in bytes.
-     */
-    public long sizeOf()
-    {
-        return INSTANCE_SIZE + SizeOf.sizeOf(array) + (segments * SIZE_OF_SEGMENT);
-    }
-
-    /**
      * Returns the element of this big array at specified index.
      *
      * @param index a position in this big array.
@@ -83,27 +74,6 @@ public final class ShortBigArray
     public void set(long index, short value)
     {
         array[segment(index)][offset(index)] = value;
-    }
-
-    /**
-     * Increments the element of this big array at specified index.
-     *
-     * @param index a position in this big array.
-     */
-    public void increment(long index)
-    {
-        array[segment(index)][offset(index)]++;
-    }
-
-    /**
-     * Adds the specified value to the specified element of this big array.
-     *
-     * @param index a position in this big array.
-     * @param value the value
-     */
-    public void add(long index, long value)
-    {
-        array[segment(index)][offset(index)] += Shorts.checkedCast(value);
     }
 
     /**

@@ -43,11 +43,6 @@ public class FunctionBinding
         return boundSignature;
     }
 
-    public int getArity()
-    {
-        return boundSignature.getArgumentTypes().size();
-    }
-
     public VariableBindings variables()
     {
         return variables;

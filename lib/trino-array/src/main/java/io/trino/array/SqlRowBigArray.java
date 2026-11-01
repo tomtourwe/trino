@@ -29,11 +29,6 @@ public final class SqlRowBigArray
         array = new ObjectBigArray<>();
     }
 
-    public SqlRowBigArray(SqlRow sqlRow)
-    {
-        array = new ObjectBigArray<>(sqlRow);
-    }
-
     /**
      * Returns the size of this big array in bytes.
      */

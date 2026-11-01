@@ -39,7 +39,6 @@ import io.trino.sql.tree.SingleColumn;
 import io.trino.sql.tree.SortItem;
 import io.trino.sql.tree.StringLiteral;
 import io.trino.sql.tree.Table;
-import io.trino.sql.tree.TableSubquery;
 import io.trino.sql.tree.Values;
 import io.trino.sql.tree.WindowDefinition;
 
@@ -59,11 +58,6 @@ public final class QueryUtil
     public static Identifier identifier(String name)
     {
         return new Identifier(name);
-    }
-
-    public static Identifier quotedIdentifier(String name)
-    {
-        return new Identifier(name, true);
     }
 
     public static SelectItem unaliasedName(String name)
@@ -103,11 +97,6 @@ public final class QueryUtil
     public static Table table(QualifiedName name)
     {
         return new Table(name);
-    }
-
-    public static Relation subquery(Query query)
-    {
-        return new TableSubquery(query);
     }
 
     public static SortItem ascending(String name)

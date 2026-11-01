@@ -414,7 +414,6 @@ public class DeltaLakeMetadata
     public static final String RENAME_COLUMN_OPERATION = "RENAME COLUMN";
     public static final String INSERT_OPERATION = "WRITE";
     public static final String MERGE_OPERATION = "MERGE";
-    public static final String UPDATE_OPERATION = "UPDATE"; // used by old Trino versions and Spark
     public static final String DELETE_OPERATION = "DELETE"; // used Trino for whole table/partition deletes as well as Spark
     public static final String TRUNCATE_OPERATION = "TRUNCATE";
     public static final String OPTIMIZE_OPERATION = "OPTIMIZE";

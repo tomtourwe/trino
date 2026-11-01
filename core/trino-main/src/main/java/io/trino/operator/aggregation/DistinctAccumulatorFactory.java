@@ -55,12 +55,6 @@ public class DistinctAccumulatorFactory
     }
 
     @Override
-    public List<Class<?>> getLambdaInterfaces()
-    {
-        return delegate.getLambdaInterfaces();
-    }
-
-    @Override
     public Accumulator createAccumulator(List<Supplier<Object>> lambdaProviders)
     {
         return new DistinctAccumulator(

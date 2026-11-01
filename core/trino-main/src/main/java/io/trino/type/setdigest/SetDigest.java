@@ -124,11 +124,6 @@ public class SetDigest
         }
     }
 
-    public HyperLogLog getHll()
-    {
-        return hll;
-    }
-
     public int estimatedInMemorySize()
     {
         return hll.estimatedInMemorySize() + minhash.size() * SIZE_OF_ENTRY + SIZE_OF_SETDIGEST + SIZE_OF_RBTREEMAP;

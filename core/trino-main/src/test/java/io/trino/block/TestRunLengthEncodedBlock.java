@@ -56,11 +56,6 @@ public class TestRunLengthEncodedBlock
         return blockBuilder.build();
     }
 
-    private static BlockBuilder createBlockBuilder()
-    {
-        return new VariableWidthBlockBuilder(null, 1, 1);
-    }
-
     @Test
     public void testBuildingFromLongArrayBlockBuilder()
     {

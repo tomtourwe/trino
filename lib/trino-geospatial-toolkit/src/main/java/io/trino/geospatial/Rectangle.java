@@ -89,16 +89,6 @@ public final class Rectangle
         return this.xMin <= other.xMax && this.xMax >= other.xMin && this.yMin <= other.yMax && this.yMax >= other.yMin;
     }
 
-    public Rectangle intersection(Rectangle other)
-    {
-        requireNonNull(other, "other is null");
-        if (!intersects(other)) {
-            return null;
-        }
-
-        return new Rectangle(max(this.xMin, other.xMin), max(this.yMin, other.yMin), min(this.xMax, other.xMax), min(this.yMax, other.yMax));
-    }
-
     public Rectangle merge(Rectangle other)
     {
         return new Rectangle(min(this.xMin, other.xMin), min(this.yMin, other.yMin), max(this.xMax, other.xMax), max(this.yMax, other.yMax));

@@ -255,11 +255,6 @@ public class OrcWriterOptions
                 .toString();
     }
 
-    public static Builder builder()
-    {
-        return builderFrom(new OrcWriterOptions());
-    }
-
     public static Builder builderFrom(OrcWriterOptions options)
     {
         return new Builder(options);

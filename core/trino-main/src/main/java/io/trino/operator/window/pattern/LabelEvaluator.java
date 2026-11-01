@@ -103,11 +103,6 @@ public class LabelEvaluator
             this.session = requireNonNull(session, "session is null");
         }
 
-        public List<PhysicalValueAccessor> getExpectedLayout()
-        {
-            return expectedLayout;
-        }
-
         public boolean test(ArrayView matchedLabels, MatchAggregation[] aggregations, int partitionStart, int searchStart, int searchEnd, int patternStart, long matchNumber, ProjectingPagesWindowIndex windowIndex)
         {
             int currentRow = patternStart + matchedLabels.length() - 1;

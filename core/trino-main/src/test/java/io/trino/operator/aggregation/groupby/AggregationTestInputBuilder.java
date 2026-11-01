@@ -30,13 +30,6 @@ public class AggregationTestInputBuilder
         this.function = function;
     }
 
-    public AggregationTestInputBuilder setOffset(int offset)
-    {
-        this.offset = offset;
-
-        return this;
-    }
-
     public AggregationTestInput build()
     {
         return new AggregationTestInput(function, pages, offset);

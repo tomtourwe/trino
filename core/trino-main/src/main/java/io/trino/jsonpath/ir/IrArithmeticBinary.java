@@ -51,10 +51,5 @@ public record IrArithmeticBinary(Operator operator, IrPathNode left, IrPathNode 
         {
             this.type = requireNonNull(type, "type is null");
         }
-
-        public OperatorType getType()
-        {
-            return type;
-        }
     }
 }

@@ -30,11 +30,6 @@ public final class SliceBigArray
         array = new ObjectBigArray<>();
     }
 
-    public SliceBigArray(Slice slice)
-    {
-        array = new ObjectBigArray<>(slice);
-    }
-
     /**
      * Returns the size of this big array in bytes.
      */

@@ -16,7 +16,6 @@ package io.trino.metadata;
 import io.trino.spi.catalog.CatalogName;
 import io.trino.spi.connector.ColumnSchema;
 import io.trino.spi.connector.ConnectorTableSchema;
-import io.trino.spi.connector.SchemaTableName;
 
 import java.util.List;
 
@@ -29,16 +28,6 @@ public record TableSchema(CatalogName catalogName, ConnectorTableSchema tableSch
     {
         requireNonNull(catalogName, "catalogName is null");
         requireNonNull(tableSchema, "metadata is null");
-    }
-
-    public QualifiedObjectName qualifiedName()
-    {
-        return new QualifiedObjectName(catalogName.toString(), tableSchema.getTable().getSchemaName(), tableSchema.getTable().getTableName());
-    }
-
-    public SchemaTableName table()
-    {
-        return tableSchema.getTable();
     }
 
     public List<ColumnSchema> columns()

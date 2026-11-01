@@ -84,11 +84,6 @@ public interface SpoolingController
             this.positions = 0;
         }
 
-        public boolean isEmpty()
-        {
-            return pages == 0 && size == 0 && positions == 0;
-        }
-
         public MetricSnapshot snapshot()
         {
             return new MetricSnapshot(positions, size, pages);

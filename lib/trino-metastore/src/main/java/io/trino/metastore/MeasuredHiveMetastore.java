@@ -41,11 +41,6 @@ public class MeasuredHiveMetastore
         this.delegate = requireNonNull(delegate, "delegate is null");
     }
 
-    public static HiveMetastoreFactory factory(HiveMetastoreFactory metastoreFactory)
-    {
-        return new MeasuredMetastoreFactory(metastoreFactory);
-    }
-
     @Override
     public Metrics getMetrics()
     {

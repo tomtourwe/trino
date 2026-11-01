@@ -135,14 +135,6 @@ final class FlatSet
         return getIndex(block, position, valueHashCode(block, position)) >= 0;
     }
 
-    public boolean contains(Block block, int position, long hash)
-    {
-        if (block.isNull(position)) {
-            return hasNull;
-        }
-        return getIndex(block, position, hash) >= 0;
-    }
-
     public void add(Block block, int position)
     {
         if (block.isNull(position)) {
@@ -150,15 +142,6 @@ final class FlatSet
             return;
         }
         addNonNull(block, position, valueHashCode(block, position));
-    }
-
-    public void add(Block block, int position, long hash)
-    {
-        if (block.isNull(position)) {
-            hasNull = true;
-            return;
-        }
-        addNonNull(block, position, hash);
     }
 
     private void addNonNull(Block block, int position, long hash)

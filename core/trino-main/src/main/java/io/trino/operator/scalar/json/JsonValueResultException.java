@@ -24,9 +24,4 @@ public class JsonValueResultException
     {
         super(JSON_VALUE_RESULT_ERROR, "cannot extract SQL scalar from JSON: " + message);
     }
-
-    public JsonValueResultException(String message, Throwable cause)
-    {
-        super(JSON_VALUE_RESULT_ERROR, "cannot extract SQL scalar from JSON: " + message, cause);
-    }
 }

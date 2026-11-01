@@ -120,10 +120,4 @@ public final class TrinoBooleanPlainValuesWriter
     {
         return PLAIN;
     }
-
-    @Override
-    public String memUsageString(String prefix)
-    {
-        return output.memUsageString(prefix);
-    }
 }

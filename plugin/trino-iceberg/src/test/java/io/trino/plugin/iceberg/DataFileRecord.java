@@ -26,7 +26,6 @@ public class DataFileRecord
     private final String filePath;
     private final String fileFormat;
     private final long recordCount;
-    private final long fileSizeInBytes;
     private final Map<Integer, Long> columnSizes;
     private final Map<Integer, Long> valueCounts;
     private final Map<Integer, Long> nullValueCounts;
@@ -69,7 +68,6 @@ public class DataFileRecord
         this.filePath = filePath;
         this.fileFormat = fileFormat;
         this.recordCount = recordCount;
-        this.fileSizeInBytes = fileSizeInBytes;
         this.columnSizes = columnSizes;
         this.valueCounts = valueCounts;
         this.nullValueCounts = nullValueCounts;
@@ -96,11 +94,6 @@ public class DataFileRecord
     public long getRecordCount()
     {
         return recordCount;
-    }
-
-    public long getFileSizeInBytes()
-    {
-        return fileSizeInBytes;
     }
 
     public Map<Integer, Long> getColumnSizes()

@@ -19,7 +19,6 @@ import io.airlift.slice.Slices;
 import java.io.Closeable;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 
@@ -204,17 +203,6 @@ public final class DataOutputStream
             ensureWritableBytes(length);
             slice.setBytes(bufferPosition, source, sourceIndex, length);
             bufferPosition += length;
-        }
-    }
-
-    public void write(InputStream in, int length)
-            throws IOException
-    {
-        while (length > 0) {
-            int batch = ensureBatchSize(length);
-            slice.setBytes(bufferPosition, in, batch);
-            bufferPosition += batch;
-            length -= batch;
         }
     }
 

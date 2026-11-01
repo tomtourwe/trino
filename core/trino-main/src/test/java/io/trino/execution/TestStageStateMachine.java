@@ -266,11 +266,6 @@ public class TestStageStateMachine
         assertThat(stats.getSpilledDataSize()).isEqualTo(succinctBytes(expectedStatsValue));
     }
 
-    private static TaskStats taskStats(List<PipelineContext> pipelineContexts)
-    {
-        return taskStats(pipelineContexts, 0);
-    }
-
     private static TaskStats taskStats(List<PipelineContext> pipelineContexts, int baseValue)
     {
         return new TaskStats(

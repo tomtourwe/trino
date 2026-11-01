@@ -34,11 +34,6 @@ public final class BucketNodeMap
         this.bucketToNode = ImmutableList.copyOf(requireNonNull(bucketToNode, "bucketToNode is null"));
     }
 
-    public int getBucketCount()
-    {
-        return bucketToNode.size();
-    }
-
     public int getBucket(Split split)
     {
         return splitToBucket.applyAsInt(split);
@@ -57,10 +52,5 @@ public final class BucketNodeMap
     public List<InternalNode> getDistinctNodes()
     {
         return bucketToNode.stream().distinct().collect(toImmutableList());
-    }
-
-    public ToIntFunction<Split> getSplitToBucketFunction()
-    {
-        return splitToBucket;
     }
 }

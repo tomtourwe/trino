@@ -32,7 +32,6 @@ import io.trino.spiller.SpillSpaceTracker;
 import io.trino.sql.planner.plan.PlanNodeId;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
@@ -55,7 +54,6 @@ import static io.trino.operator.TaskContext.createTaskContext;
 import static java.lang.String.format;
 import static java.util.Map.Entry.comparingByValue;
 import static java.util.Objects.requireNonNull;
-import static java.util.stream.Collectors.toList;
 
 @ThreadSafe
 public class QueryContext
@@ -276,19 +274,6 @@ public class QueryContext
                 cpuTimerEnabled);
         taskContexts.put(taskId, taskContext);
         return taskContext;
-    }
-
-    public <C, R> R accept(QueryContextVisitor<C, R> visitor, C context)
-    {
-        return visitor.visitQueryContext(this, context);
-    }
-
-    public <C, R> List<R> acceptChildren(QueryContextVisitor<C, R> visitor, C context)
-    {
-        return taskContexts.values()
-                .stream()
-                .map(taskContext -> taskContext.accept(visitor, context))
-                .collect(toList());
     }
 
     public TaskContext getTaskContextByTaskId(TaskId taskId)

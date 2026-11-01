@@ -56,12 +56,6 @@ public class TracingAccessControl
         this.tracer = requireNonNull(tracer, "tracer is null");
     }
 
-    @VisibleForTesting
-    public AccessControl getDelegate()
-    {
-        return delegate;
-    }
-
     @Override
     public void checkCanSetUser(Optional<Principal> principal, String userName)
     {

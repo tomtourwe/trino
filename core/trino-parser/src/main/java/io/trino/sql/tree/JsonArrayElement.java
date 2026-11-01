@@ -40,17 +40,6 @@ public class JsonArrayElement
         this.format = format;
     }
 
-    public JsonArrayElement(Optional<NodeLocation> location, Expression value, Optional<JsonFormat> format)
-    {
-        super(location);
-
-        requireNonNull(value, "value is null");
-        requireNonNull(format, "format is null");
-
-        this.value = value;
-        this.format = format;
-    }
-
     public Expression getValue()
     {
         return value;

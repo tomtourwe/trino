@@ -20,8 +20,6 @@ import io.trino.operator.TaskContext;
 
 public interface QueryContextVisitor<C, R>
 {
-    R visitQueryContext(QueryContext queryContext, C visitContext);
-
     R visitTaskContext(TaskContext taskContext, C visitContext);
 
     R visitPipelineContext(PipelineContext pipelineContext, C visitContext);
